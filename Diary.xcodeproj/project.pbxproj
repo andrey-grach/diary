@@ -14,6 +14,16 @@
 		3E6951482D087CCB00587837 /* DiaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6951472D087CCB00587837 /* DiaryTests.swift */; };
 		3E6951522D087CCB00587837 /* DiaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6951512D087CCB00587837 /* DiaryUITests.swift */; };
 		3E6951542D087CCB00587837 /* DiaryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6951532D087CCB00587837 /* DiaryUITestsLaunchTests.swift */; };
+		3EA280912D0C3FFF003A2433 /* TasksScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280902D0C3FFF003A2433 /* TasksScreenModels.swift */; };
+		3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280922D0C401F003A2433 /* TasksScreenPresenter.swift */; };
+		3EA280952D0C4030003A2433 /* TasksScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280942D0C4030003A2433 /* TasksScreenRouter.swift */; };
+		3EA280972D0C404D003A2433 /* TasksScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280962D0C404D003A2433 /* TasksScreenAssembly.swift */; };
+		3EA280992D0C405C003A2433 /* TasksScreenTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280982D0C405C003A2433 /* TasksScreenTableAdapter.swift */; };
+		3EA2809C2D0C40EE003A2433 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA2809B2D0C40EE003A2433 /* DiaryService.swift */; };
+		3EA365CE2D0CB632009192EE /* TasksList.json in Resources */ = {isa = PBXBuildFile; fileRef = 3EA365CD2D0CB632009192EE /* TasksList.json */; };
+		3EA365D42D0CB947009192EE /* TasksResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA365D32D0CB947009192EE /* TasksResponse.swift */; };
+		3EA365D62D0CBAA3009192EE /* TasksItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA365D52D0CBAA3009192EE /* TasksItem.swift */; };
+		3EA365D92D0CBC98009192EE /* LossyCodableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA365D82D0CBC98009192EE /* LossyCodableList.swift */; };
 		3EBC87E82D0B7CC200BF70BF /* TasksScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EBC87E72D0B7CC200BF70BF /* TasksScreenViewController.swift */; };
 		3EBC87EA2D0B7D5100BF70BF /* TasksScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EBC87E92D0B7D5100BF70BF /* TasksScreenViewController.xib */; };
 		A28AE512190587A0FC08E92C /* Pods_DiaryTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 172DBF2734A2D554BE89284C /* Pods_DiaryTests.framework */; };
@@ -50,6 +60,16 @@
 		3E69514D2D087CCB00587837 /* DiaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6951512D087CCB00587837 /* DiaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUITests.swift; sourceTree = "<group>"; };
 		3E6951532D087CCB00587837 /* DiaryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3EA280902D0C3FFF003A2433 /* TasksScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenModels.swift; sourceTree = "<group>"; };
+		3EA280922D0C401F003A2433 /* TasksScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenPresenter.swift; sourceTree = "<group>"; };
+		3EA280942D0C4030003A2433 /* TasksScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenRouter.swift; sourceTree = "<group>"; };
+		3EA280962D0C404D003A2433 /* TasksScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenAssembly.swift; sourceTree = "<group>"; };
+		3EA280982D0C405C003A2433 /* TasksScreenTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenTableAdapter.swift; sourceTree = "<group>"; };
+		3EA2809B2D0C40EE003A2433 /* DiaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryService.swift; sourceTree = "<group>"; };
+		3EA365CD2D0CB632009192EE /* TasksList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TasksList.json; sourceTree = "<group>"; };
+		3EA365D32D0CB947009192EE /* TasksResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksResponse.swift; sourceTree = "<group>"; };
+		3EA365D52D0CBAA3009192EE /* TasksItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksItem.swift; sourceTree = "<group>"; };
+		3EA365D82D0CBC98009192EE /* LossyCodableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossyCodableList.swift; sourceTree = "<group>"; };
 		3EBC87E72D0B7CC200BF70BF /* TasksScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenViewController.swift; sourceTree = "<group>"; };
 		3EBC87E92D0B7D5100BF70BF /* TasksScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TasksScreenViewController.xib; sourceTree = "<group>"; };
 		7941AF384DF8D648C151F595 /* Pods_Diary_DiaryUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Diary_DiaryUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,10 +147,13 @@
 		3E69512F2D087CC800587837 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				3EA365D72D0CBC84009192EE /* Helpers */,
+				3EA365D02D0CB8CF009192EE /* UI */,
+				3EA365CF2D0CB86A009192EE /* Models */,
+				3EA2809A2D0C40C4003A2433 /* Services */,
 				3EBC87EE2D0B82F500BF70BF /* Supporting files */,
 				3EBC87ED2D0B82D300BF70BF /* Resources */,
 				3EBC87EB2D0B828200BF70BF /* AppDelegate */,
-				3EBC87E62D0B7CAD00BF70BF /* TasksScreen */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -152,11 +175,73 @@
 			path = DiaryUITests;
 			sourceTree = "<group>";
 		};
-		3EBC87E62D0B7CAD00BF70BF /* TasksScreen */ = {
+		3EA2809A2D0C40C4003A2433 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3EA2809B2D0C40EE003A2433 /* DiaryService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		3EA2809D2D0C426B003A2433 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				3EBC87E72D0B7CC200BF70BF /* TasksScreenViewController.swift */,
 				3EBC87E92D0B7D5100BF70BF /* TasksScreenViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3EA365CF2D0CB86A009192EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3EA365D12D0CB901009192EE /* Responses */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3EA365D02D0CB8CF009192EE /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3EBC87E62D0B7CAD00BF70BF /* TasksScreen */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		3EA365D12D0CB901009192EE /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				3EA365D22D0CB91D009192EE /* Tasks */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		3EA365D22D0CB91D009192EE /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				3EA365D32D0CB947009192EE /* TasksResponse.swift */,
+				3EA365D52D0CBAA3009192EE /* TasksItem.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		3EA365D72D0CBC84009192EE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3EA365D82D0CBC98009192EE /* LossyCodableList.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		3EBC87E62D0B7CAD00BF70BF /* TasksScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3EA2809D2D0C426B003A2433 /* View */,
+				3EA280902D0C3FFF003A2433 /* TasksScreenModels.swift */,
+				3EA280922D0C401F003A2433 /* TasksScreenPresenter.swift */,
+				3EA280942D0C4030003A2433 /* TasksScreenRouter.swift */,
+				3EA280962D0C404D003A2433 /* TasksScreenAssembly.swift */,
+				3EA280982D0C405C003A2433 /* TasksScreenTableAdapter.swift */,
 			);
 			path = TasksScreen;
 			sourceTree = "<group>";
@@ -174,6 +259,7 @@
 			children = (
 				3E69513B2D087CCA00587837 /* LaunchScreen.storyboard */,
 				3E6951392D087CCA00587837 /* Assets.xcassets */,
+				3EA365CD2D0CB632009192EE /* TasksList.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -304,6 +390,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EA365CE2D0CB632009192EE /* TasksList.json in Resources */,
 				3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */,
 				3EBC87EA2D0B7D5100BF70BF /* TasksScreenViewController.xib in Resources */,
 				3E69513D2D087CCA00587837 /* Base in Resources */,
@@ -418,7 +505,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EBC87E82D0B7CC200BF70BF /* TasksScreenViewController.swift in Sources */,
+				3EA365D62D0CBAA3009192EE /* TasksItem.swift in Sources */,
+				3EA365D92D0CBC98009192EE /* LossyCodableList.swift in Sources */,
+				3EA280952D0C4030003A2433 /* TasksScreenRouter.swift in Sources */,
+				3EA280972D0C404D003A2433 /* TasksScreenAssembly.swift in Sources */,
+				3EA280912D0C3FFF003A2433 /* TasksScreenModels.swift in Sources */,
+				3EA280992D0C405C003A2433 /* TasksScreenTableAdapter.swift in Sources */,
+				3EA365D42D0CB947009192EE /* TasksResponse.swift in Sources */,
 				3E6951312D087CC800587837 /* AppDelegate.swift in Sources */,
+				3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */,
+				3EA2809C2D0C40EE003A2433 /* DiaryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

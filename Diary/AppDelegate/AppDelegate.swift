@@ -6,19 +6,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
         initializeWindow()
         return true
     }
     
-    func initializeWindow() {
+    private func initializeWindow() {
         var rootController: UIViewController
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        rootController = TasksScreenViewController()
-        window?.rootViewController = rootController
-        window?.backgroundColor = .red
+        rootController = TasksScreenAssembly.assemble()
+        let navBar = UINavigationController(rootViewController: rootController)
+        window?.rootViewController = navBar
         window?.makeKeyAndVisible()
-//        configureNavigationBar()
     }
 }
