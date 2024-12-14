@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TasksScreenViewController" customModule="Diary" customModuleProvider="target">
             <connections>
+                <outlet property="tableView" destination="EBR-Xm-efd" id="lsc-Yp-QtM"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vkZ-Ib-hHT"/>
             </connections>
         </placeholder>
@@ -18,9 +19,41 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EBR-Xm-efd">
+                    <rect key="frame" x="0.0" y="197" width="393" height="621"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PTm-8o-iSc"/>
+                        <outlet property="delegate" destination="-1" id="Ds3-Jr-y0t"/>
+                    </connections>
+                </tableView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="UPU-ep-Cf6">
+                    <rect key="frame" x="0.0" y="69" width="393" height="128"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="WNh-3P-G3K"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MLz-zP-Hai">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="134" y="20"/>
+            <constraints>
+                <constraint firstItem="UPU-ep-Cf6" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="5q5-2P-1fy"/>
+                <constraint firstItem="EBR-Xm-efd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Bwl-VL-Ii9"/>
+                <constraint firstItem="UPU-ep-Cf6" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="MJc-st-GM5"/>
+                <constraint firstItem="EBR-Xm-efd" firstAttribute="top" secondItem="UPU-ep-Cf6" secondAttribute="bottom" id="bQb-9t-Gsf"/>
+                <constraint firstItem="UPU-ep-Cf6" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="sBW-QQ-R97"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="EBR-Xm-efd" secondAttribute="trailing" id="sXd-7e-ZxF"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="EBR-Xm-efd" secondAttribute="bottom" id="uub-fB-Thr"/>
+            </constraints>
+            <point key="canvasLocation" x="133.58778625954199" y="19.718309859154932"/>
         </view>
     </objects>
     <resources>

@@ -4,8 +4,8 @@ struct TasksItem: Codable {
     let id: Int
     let name: String
     let description: String
-    let dateStart: Int
-    let dateFinish: Int
+    let dateStart: String
+    let dateFinish: String
     
     enum CodingKeys: String, CodingKey {
         case id

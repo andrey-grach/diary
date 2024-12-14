@@ -5,8 +5,12 @@ protocol DiaryServiceProtocol {
 }
 
 final class DiaryService {
+
+}
+
+extension DiaryService: DiaryServiceProtocol {
     func getTasks(completion: @escaping (Result<TasksResponse, any Error>) -> Void) {
-        let urlString = "https://jsonkeeper.com/b/85S8"
+        let urlString = "https://jsonhost.com/json/242ecff29a7d3d9b6b17e5d681e11fd9"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -23,8 +27,4 @@ final class DiaryService {
             }
         }.resume()
     }
-}
-
-extension DiaryService: DiaryServiceProtocol {
-    
 }

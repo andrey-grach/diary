@@ -4,7 +4,7 @@ enum TasksScreenModels {
     enum State {
         case `default`
         case loading
-        case success
+        case success(TasksResponse)
         case failure(Error)
     }
 }
