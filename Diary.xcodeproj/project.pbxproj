@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		15AF1E6921549D8893E73C05 /* Pods_Diary_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7941AF384DF8D648C151F595 /* Pods_Diary_DiaryUITests.framework */; };
+		3E0E9AEA2D0DD031001720BF /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AE92D0DD031001720BF /* MyCollectionViewCell.xib */; };
+		3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9AE82D0DD031001720BF /* MyCollectionViewCell.swift */; };
 		3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29C09F2D0DB0F100431156 /* CalendarManager.swift */; };
-		3E29C0A42D0DBE4700431156 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E29C0A32D0DBE4700431156 /* CollectionViewCell.xib */; };
-		3E29C0A52D0DBE4700431156 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29C0A22D0DBE4700431156 /* CollectionViewCell.swift */; };
 		3E6951312D087CC800587837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6951302D087CC800587837 /* AppDelegate.swift */; };
 		3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E6951392D087CCA00587837 /* Assets.xcassets */; };
 		3E69513D2D087CCA00587837 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3E69513C2D087CCA00587837 /* Base */; };
@@ -53,9 +53,9 @@
 /* Begin PBXFileReference section */
 		172DBF2734A2D554BE89284C /* Pods_DiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7FDFF3CFD2BCB62BB8209B /* Pods-DiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E0E9AE82D0DD031001720BF /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		3E0E9AE92D0DD031001720BF /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		3E29C09F2D0DB0F100431156 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
-		3E29C0A22D0DBE4700431156 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		3E29C0A32D0DBE4700431156 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		3E69512D2D087CC800587837 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6951302D087CC800587837 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E6951392D087CCA00587837 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,6 +128,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		3E0E9AEC2D0E1980001720BF /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		3E29C09E2D0DB0B400431156 /* CalendarManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,13 +143,13 @@
 			path = CalendarManager;
 			sourceTree = "<group>";
 		};
-		3E29C0A12D0DBE1D00431156 /* Cells */ = {
+		3E29C0A12D0DBE1D00431156 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				3E29C0A22D0DBE4700431156 /* CollectionViewCell.swift */,
-				3E29C0A32D0DBE4700431156 /* CollectionViewCell.xib */,
+				3E0E9AE82D0DD031001720BF /* MyCollectionViewCell.swift */,
+				3E0E9AE92D0DD031001720BF /* MyCollectionViewCell.xib */,
 			);
-			path = Cells;
+			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
 		3E6951242D087CC800587837 = {
@@ -210,7 +217,8 @@
 		3EA2809D2D0C426B003A2433 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3E29C0A12D0DBE1D00431156 /* Cells */,
+				3E0E9AEC2D0E1980001720BF /* TableViewCells */,
+				3E29C0A12D0DBE1D00431156 /* CollectionViewCells */,
 				3EBC87E72D0B7CC200BF70BF /* TasksScreenViewController.swift */,
 				3EBC87E92D0B7D5100BF70BF /* TasksScreenViewController.xib */,
 			);
@@ -415,11 +423,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E0E9AEA2D0DD031001720BF /* MyCollectionViewCell.xib in Resources */,
 				3EA365CE2D0CB632009192EE /* TasksList.json in Resources */,
 				3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */,
 				3EBC87EA2D0B7D5100BF70BF /* TasksScreenViewController.xib in Resources */,
 				3E69513D2D087CCA00587837 /* Base in Resources */,
-				3E29C0A42D0DBE4700431156 /* CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,10 +546,10 @@
 				3EA280912D0C3FFF003A2433 /* TasksScreenModels.swift in Sources */,
 				3EA280992D0C405C003A2433 /* TasksScreenTableAdapter.swift in Sources */,
 				3EA365D42D0CB947009192EE /* TasksResponse.swift in Sources */,
-				3E29C0A52D0DBE4700431156 /* CollectionViewCell.swift in Sources */,
 				3E6951312D087CC800587837 /* AppDelegate.swift in Sources */,
 				3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */,
 				3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */,
+				3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */,
 				3EA2809C2D0C40EE003A2433 /* DiaryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

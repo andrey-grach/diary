@@ -18,7 +18,6 @@ final class CalendarManager {
                 days.append((date, day))
             }
         }
-        
         return days
     }
 }
