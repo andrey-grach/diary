@@ -5,7 +5,7 @@ final class TasksScreenPresenter {
     // MARK: - Properties
     weak var view: TasksScreenViewInput?
     
-    //MARK: - Private Properties
+    // MARK: - Private Properties
     private let router: TasksScreenRouterProtocol
     private let service: DiaryServiceProtocol
     

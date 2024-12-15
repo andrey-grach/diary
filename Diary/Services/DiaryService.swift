@@ -10,7 +10,7 @@ final class DiaryService {
 
 extension DiaryService: DiaryServiceProtocol {
     func getTasks(completion: @escaping (Result<TasksResponse, any Error>) -> Void) {
-        let urlString = "https://jsonhost.com/json/242ecff29a7d3d9b6b17e5d681e11fd9"
+        let urlString = "https://jsonhost.com/json/788fede4eae4d0d2567fa8ff368765bb"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -18,7 +18,6 @@ extension DiaryService: DiaryServiceProtocol {
                 completion(.failure(error))
                 return
             }
-            
             do {
                 let decodedResponse = try JSONDecoder().decode(TasksResponse.self, from: data ?? Data([]))
                 completion(.success(decodedResponse))

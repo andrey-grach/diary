@@ -10,6 +10,11 @@
 		15AF1E6921549D8893E73C05 /* Pods_Diary_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7941AF384DF8D648C151F595 /* Pods_Diary_DiaryUITests.framework */; };
 		3E0E9AEA2D0DD031001720BF /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AE92D0DD031001720BF /* MyCollectionViewCell.xib */; };
 		3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9AE82D0DD031001720BF /* MyCollectionViewCell.swift */; };
+		3E0E9AEF2D0F3A68001720BF /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AEE2D0F3A68001720BF /* TaskTableViewCell.xib */; };
+		3E0E9AF02D0F3A68001720BF /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9AED2D0F3A68001720BF /* TaskTableViewCell.swift */; };
+		3E0E9AFD2D0F6881001720BF /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9AFC2D0F6881001720BF /* EventView.swift */; };
+		3E0E9AFF2D0F6898001720BF /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AFE2D0F6898001720BF /* EventView.xib */; };
+		3E0E9B012D0F692C001720BF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9B002D0F692C001720BF /* UIViewExtension.swift */; };
 		3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29C09F2D0DB0F100431156 /* CalendarManager.swift */; };
 		3E6951312D087CC800587837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6951302D087CC800587837 /* AppDelegate.swift */; };
 		3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E6951392D087CCA00587837 /* Assets.xcassets */; };
@@ -55,6 +60,11 @@
 		2C7FDFF3CFD2BCB62BB8209B /* Pods-DiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E0E9AE82D0DD031001720BF /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E0E9AE92D0DD031001720BF /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
+		3E0E9AED2D0F3A68001720BF /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		3E0E9AEE2D0F3A68001720BF /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
+		3E0E9AFC2D0F6881001720BF /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		3E0E9AFE2D0F6898001720BF /* EventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventView.xib; sourceTree = "<group>"; };
+		3E0E9B002D0F692C001720BF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		3E29C09F2D0DB0F100431156 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		3E69512D2D087CC800587837 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6951302D087CC800587837 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -131,8 +141,20 @@
 		3E0E9AEC2D0E1980001720BF /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				3E0E9AED2D0F3A68001720BF /* TaskTableViewCell.swift */,
+				3E0E9AEE2D0F3A68001720BF /* TaskTableViewCell.xib */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		3E0E9AF12D0F5B46001720BF /* EventView */ = {
+			isa = PBXGroup;
+			children = (
+				3E0E9AFC2D0F6881001720BF /* EventView.swift */,
+				3E0E9AFE2D0F6898001720BF /* EventView.xib */,
+				3E0E9B002D0F692C001720BF /* UIViewExtension.swift */,
+			);
+			path = EventView;
 			sourceTree = "<group>";
 		};
 		3E29C09E2D0DB0B400431156 /* CalendarManager */ = {
@@ -217,6 +239,7 @@
 		3EA2809D2D0C426B003A2433 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3E0E9AF12D0F5B46001720BF /* EventView */,
 				3E0E9AEC2D0E1980001720BF /* TableViewCells */,
 				3E29C0A12D0DBE1D00431156 /* CollectionViewCells */,
 				3EBC87E72D0B7CC200BF70BF /* TasksScreenViewController.swift */,
@@ -423,6 +446,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E0E9AFF2D0F6898001720BF /* EventView.xib in Resources */,
+				3E0E9AEF2D0F3A68001720BF /* TaskTableViewCell.xib in Resources */,
 				3E0E9AEA2D0DD031001720BF /* MyCollectionViewCell.xib in Resources */,
 				3EA365CE2D0CB632009192EE /* TasksList.json in Resources */,
 				3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */,
@@ -538,14 +563,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E0E9AF02D0F3A68001720BF /* TaskTableViewCell.swift in Sources */,
 				3EBC87E82D0B7CC200BF70BF /* TasksScreenViewController.swift in Sources */,
 				3EA365D62D0CBAA3009192EE /* TasksItem.swift in Sources */,
 				3EA365D92D0CBC98009192EE /* LossyCodableList.swift in Sources */,
 				3EA280952D0C4030003A2433 /* TasksScreenRouter.swift in Sources */,
 				3EA280972D0C404D003A2433 /* TasksScreenAssembly.swift in Sources */,
+				3E0E9B012D0F692C001720BF /* UIViewExtension.swift in Sources */,
 				3EA280912D0C3FFF003A2433 /* TasksScreenModels.swift in Sources */,
 				3EA280992D0C405C003A2433 /* TasksScreenTableAdapter.swift in Sources */,
 				3EA365D42D0CB947009192EE /* TasksResponse.swift in Sources */,
+				3E0E9AFD2D0F6881001720BF /* EventView.swift in Sources */,
 				3E6951312D087CC800587837 /* AppDelegate.swift in Sources */,
 				3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */,
 				3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */,

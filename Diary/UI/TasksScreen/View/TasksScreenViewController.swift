@@ -10,8 +10,10 @@ protocol TasksScreenPresenterProtocol {
 }
 
 final class TasksScreenViewController: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var dateLabel: UILabel!
+
     
     private let presenter: TasksScreenPresenterProtocol
     private let tableAdapter: TasksScreenTableAdapter
@@ -19,8 +21,10 @@ final class TasksScreenViewController: UIViewController {
     private var calendarManager = CalendarManager.shared
     private var days: [(Date, Int)] = []
     private var collectionCellWidth: CGFloat = 0
-    private var itemSize: CGSize = .zero
-
+    private var collectionViewCellSize: CGSize = .zero
+    private var selectedDate: Date = Date()
+    private var selectedCollectionViewCell: IndexPath?
+    
     init(presenter: TasksScreenPresenterProtocol, tableAdapter: TasksScreenTableAdapter) {
         self.presenter = presenter
         self.tableAdapter = tableAdapter
@@ -42,42 +46,61 @@ final class TasksScreenViewController: UIViewController {
         collectionView.dataSource = self
         
         days = calendarManager.getDaysInCurrentMonth()
-        // Вычисляем ширину ячейки только один раз
-        let totalWidth = collectionView.bounds.width
-        let numberOfItemsPerRow: CGFloat = 9
-        collectionCellWidth = totalWidth / numberOfItemsPerRow
-        calculateItemSize()
-    }
-    
-    // Метод для расчета размера ячейки
-        private func calculateItemSize() {
-            let width = collectionView.bounds.width // Ширина коллекции
-            let padding: CGFloat = 6 * 2 // Отступы (с учетом межстрочного расстояния)
-            let availableWidth = width - padding // Доступная ширина для ячеек
-
-            let numberOfItemsPerRow: CGFloat = 7 // Количество ячеек в строке
-            let itemWidth = availableWidth / numberOfItemsPerRow // Ширина каждой ячейки
-
-            itemSize = CGSize(width: itemWidth, height: itemWidth) // Высота может быть равна ширине для квадратных ячеек
-        }
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+        selectCurrentDay()
+        
+//        eventView.configureView(title: "zxc")
         
         // Вычисляем ширину ячейки только один раз
-        calculateItemSize()
+        //        let totalWidth = collectionView.bounds.width
+        //        let numberOfItemsPerRow: CGFloat = 9
+        //        collectionCellWidth = totalWidth / numberOfItemsPerRow
+        //        calculateCollectionViewCellSize()
+    }
+    
+    //    override func viewWillLayoutSubviews() {
+    //        super.viewWillLayoutSubviews()
+    //
+    //        // Вычисляем ширину ячейки только один раз
+    //        calculateCollectionViewCellSize()
+    //        collectionView.collectionViewLayout.invalidateLayout()
+    //    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        calculateCollectionViewCellSize()
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
+    }
+    
+    // Метод для расчета размера ячейки
+    private func calculateCollectionViewCellSize() {
+        let width = collectionView.bounds.width
+        let padding: CGFloat = 6 * 6 // Отступы (с учетом межстрочного расстояния)
+        let availableWidth = width - padding // Доступная ширина для ячеек
+        
+        let numberOfItemsPerRow: CGFloat = 7 // Количество ячеек в строке
+        let itemWidth = availableWidth / numberOfItemsPerRow // Ширина каждой ячейки
+        
+        collectionViewCellSize = CGSize(width: itemWidth, height: itemWidth) // Высота может быть равна ширине для квадратных ячеек
+    }
+    
+    //    override func viewDidLayoutSubviews() {
+    //        super.viewDidLayoutSubviews()
+    //        collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
+    //    }
     // Обновление размера при изменении ориентации или изменении размера
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        calculateItemSize() // Пересчитываем размер при изменении размеров
-//        collectionView.collectionViewLayout.invalidateLayout() // Обновляем макет коллекции
-//    }
+    //    override func viewDidLayoutSubviews() {
+    //        super.viewDidLayoutSubviews()
+    //        calculateItemSize() // Пересчитываем размер при изменении размеров
+    //        collectionView.collectionViewLayout.invalidateLayout() // Обновляем макет коллекции
+    //    }
     
     private func prepareTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TaskTableViewCell.nib(), forCellReuseIdentifier: TaskTableViewCell.identifier)
     }
     
     private func prepareCollectionView() {
@@ -90,6 +113,7 @@ final class TasksScreenViewController: UIViewController {
     }
     
     private func stopLoading() {
+        print("Stop")
     }
     
     // TODO: Error alert
@@ -109,50 +133,50 @@ final class TasksScreenViewController: UIViewController {
     //    }
     
     // Функция для преобразования строки даты в объект Date
-//    func dateFromString(_ dateString: String) -> Date? {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Пример формата даты
-//        return dateFormatter.date(from: dateString)
-//    }
+    //    func dateFromString(_ dateString: String) -> Date? {
+    //        let dateFormatter = DateFormatter()
+    //        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Пример формата даты
+    //        return dateFormatter.date(from: dateString)
+    //    }
     
     func dateFromTimestamp(_ timestamp: String) -> Date? {
         guard let timeInterval = TimeInterval(timestamp) else { return nil }
         return Date(timeIntervalSince1970: timeInterval)
     }
     
-//    func tasksForToday() -> [String?] {
-//        let calendar = Calendar.current
-//        let now = Date()
-//        
-//        // Получаем начало и конец текущего дня
-//        let startOfDay = calendar.startOfDay(for: now)
-//        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
-//        
-//        // Фильтруем задачи для текущего дня
-//        let todayTasks = tasks.filter { task in
-//            guard let taskDateStart = dateFromString(task.dateStart) else { return false }
-//            return taskDateStart >= startOfDay && taskDateStart < endOfDay
-//        }
-//        
-//        // Создаем массив с 24 элементами (по одному на каждый час)
-//        var hourlyTasks: [String?] = Array(repeating: nil, count: 24)
-//        
-//        // Группируем задачи по часам
-//        for task in todayTasks {
-//            guard let taskDateStart = dateFromString(task.dateStart) else { continue }
-//            let hour = calendar.component(.hour, from: taskDateStart)
-//            hourlyTasks[hour] = task.name // Сохраняем имя задачи в соответствующий час
-//        }
-//        
-//        return hourlyTasks
-//    }
+    //    func tasksForToday() -> [String?] {
+    //        let calendar = Calendar.current
+    //        let now = Date()
+    //
+    //        // Получаем начало и конец текущего дня
+    //        let startOfDay = calendar.startOfDay(for: now)
+    //        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
+    //
+    //        // Фильтруем задачи для текущего дня
+    //        let todayTasks = tasks.filter { task in
+    //            guard let taskDateStart = dateFromString(task.dateStart) else { return false }
+    //            return taskDateStart >= startOfDay && taskDateStart < endOfDay
+    //        }
+    //
+    //        // Создаем массив с 24 элементами (по одному на каждый час)
+    //        var hourlyTasks: [String?] = Array(repeating: nil, count: 24)
+    //
+    //        // Группируем задачи по часам
+    //        for task in todayTasks {
+    //            guard let taskDateStart = dateFromString(task.dateStart) else { continue }
+    //            let hour = calendar.component(.hour, from: taskDateStart)
+    //            hourlyTasks[hour] = task.name // Сохраняем имя задачи в соответствующий час
+    //        }
+    //
+    //        return hourlyTasks
+    //    }
     
-    func tasksForToday() -> [String?] {
+    func prepareTasksFor(date: Date) -> [String?] {
         let calendar = Calendar.current
-        let now = Date()
+        //        let now = date
         
         // Получаем начало и конец текущего дня
-        let startOfDay = calendar.startOfDay(for: now)
+        let startOfDay = calendar.startOfDay(for: date)
         let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
         
         // Фильтруем задачи для текущего дня
@@ -173,7 +197,34 @@ final class TasksScreenViewController: UIViewController {
         
         return hourlyTasks
     }
-
+    
+    private func getFormattedDateFor(date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU") // Устанавливаем локаль для русского языка
+        dateFormatter.dateFormat = "EEEE, d MMMM yyyy 'года'" // Указываем формат даты
+        
+        let formattedDate = dateFormatter.string(from: date)
+        dateLabel.text = formattedDate
+    }
+    
+    func selectCurrentDay() {
+        let calendar = Calendar.current
+        let today = Date()
+        
+        getFormattedDateFor(date: today)
+        // Находим индекс текущего дня в массиве
+        if let index = days.firstIndex(where: { calendar.isDate($0.0, inSameDayAs: today) }) {
+            selectedCollectionViewCell = IndexPath(item: index, section: 0)
+            collectionView.reloadData()
+            collectionView.layoutIfNeeded()
+            collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
+            //            DispatchQueue.main.async {
+            //                self.collectionView.reloadData()
+            //                self.collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredVertically, animated: true)
+            //                self.collectionView.reloadData()
+            //            }
+        }
+    }
 }
 
 // MARK: - TasksScreenViewInput
@@ -187,7 +238,6 @@ extension TasksScreenViewController: TasksScreenViewInput {
             stopLoading()
             self.tasks = tasksResponse.tasks
             tableView.reloadData()
-            // TODO: table view / collection view fill and reload.
         case .failure(let error):
             stopLoading()
             showErrorAlert()
@@ -203,23 +253,30 @@ extension TasksScreenViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        // Получаем задачи для сегодняшнего дня
-        let hourlyTasks = tasksForToday()
+        let hourlyTasks = prepareTasksFor(date: selectedDate)
         
         // Устанавливаем текст ячейки в зависимости от наличия задачи в этот час
-        if let taskName = hourlyTasks[indexPath.row] {
-            cell.textLabel?.text = taskName // Если задача есть, отображаем её
-        } else {
-            cell.textLabel?.text = "Нет задач" // Если задачи нет, отображаем это сообщение
+        let hour = indexPath.row // Час, соответствующий текущему индексу
+        let timeInterval = String(format: "%02d:00 - %02d:00", hour, hour + 1) // Форматируем временной интервал
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.identifier, for: indexPath)
+        
+        if let reusableCell = cell as? TaskTableViewCell {
+            if let taskName = hourlyTasks[hour] {
+                reusableCell.configureCellWith(taskTitle: taskName, time: timeInterval)
+            } else {
+                reusableCell.configureCellWith(taskTitle: "Нет задач", time: timeInterval) // Отображаем временной интервал
+            }
         }
         
         return cell
         
-        //        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        //        cell.textLabel?.text = tasks[indexPath.row].name
-        //        return cell
+    }
+}
+
+extension TasksScreenViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -235,7 +292,17 @@ extension TasksScreenViewController: UICollectionViewDataSource {
         let day = dayTuple.1
         
         if let reusableCell = cell as? MyCollectionViewCell {
-            reusableCell.configure(with: String(day))
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+            dateFormatter.dateFormat = "EEE"
+            let weekdayString = dateFormatter.string(from: date)
+            
+            reusableCell.configureWith(dayNumber: String(day), dayTitle: weekdayString)
+            
+            if indexPath == selectedCollectionViewCell {
+                reusableCell.setSelected(true)
+                getFormattedDateFor(date: date)
+            }
         }
         return cell
     }
@@ -244,39 +311,27 @@ extension TasksScreenViewController: UICollectionViewDataSource {
 extension TasksScreenViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        selectedDate = days[indexPath.item].0
+        selectedCollectionViewCell = indexPath
+        tableView.reloadData()
+        collectionView.reloadData()
     }
 }
 
 extension TasksScreenViewController: UICollectionViewDelegateFlowLayout {
     
     // Метод для задания минимального расстояния между строками
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-          return 6
-      }
-
-      // Метод для задания минимального расстояния между ячейками
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-          return 6
-      }
-
-      // Метод для задания размера ячейки
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-          return itemSize // Используем заранее рассчитанный размер
-      }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 6
+    }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-////        let totalWidth = collectionView.bounds.width
-////        let numberOfItemsPerRow: CGFloat = 8
-////        let itemWidth = totalWidth / numberOfItemsPerRow
-//        
-//        return CGSize(width: collectionCellWidth, height: 60)
-//    }
+    // Метод для задания минимального расстояния между ячейками
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        0
-//    }
+    // Метод для задания размера ячейки
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionViewCellSize
+    }
 }
