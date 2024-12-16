@@ -72,7 +72,7 @@
     </objects>
     <resources>
         <namedColor name="grayPrimary">
-            <color red="0.94597750902175903" green="0.94101083278656006" blue="0.9367908239364624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94509803921568625" green="0.93725490196078431" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -14,7 +14,6 @@ final class TasksScreenViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var dateLabel: UILabel!
 
-    
     private let presenter: TasksScreenPresenterProtocol
     private let tableAdapter: TasksScreenTableAdapter
     private var tasks: [TasksItem] = []
@@ -47,6 +46,13 @@ final class TasksScreenViewController: UIViewController {
         
         days = calendarManager.getDaysInCurrentMonth()
         selectCurrentDay()
+//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля теста", startHour: 12, duration: 2)
+//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля теста", startHour: 0, duration: 4)
+    // swiftlint:disable:next line_length
+        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для", startHour: 1, duration: 10)
+        //swiftlint:disable:next line_length
+        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДля", startHour: 13, duration: 1)
+
         
 //        eventView.configureView(title: "zxc")
         
@@ -65,6 +71,7 @@ final class TasksScreenViewController: UIViewController {
     //        collectionView.collectionViewLayout.invalidateLayout()
     //    }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         calculateCollectionViewCellSize()
         collectionView.collectionViewLayout.invalidateLayout()
@@ -73,6 +80,26 @@ final class TasksScreenViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
+    }
+    
+    private func addEvent(title: String, startHour: Int, duration: Int) {
+        guard let eventView = EventView.loadFromNib() else { return }
+            eventView.configure(with: title)
+            
+            // Установите translatesAutoresizingMaskIntoConstraints в false
+            eventView.translatesAutoresizingMaskIntoConstraints = false
+            
+            // Добавьте eventView как подвид к таблице
+            tableView.addSubview(eventView)
+            
+            // Добавьте ограничения для eventView
+            NSLayoutConstraint.activate([
+                eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
+                eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+                eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
+                eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
+                eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+            ])
     }
     
     // Метод для расчета размера ячейки
@@ -85,6 +112,10 @@ final class TasksScreenViewController: UIViewController {
         let itemWidth = availableWidth / numberOfItemsPerRow // Ширина каждой ячейки
         
         collectionViewCellSize = CGSize(width: itemWidth, height: itemWidth) // Высота может быть равна ширине для квадратных ячеек
+    }
+    
+    private func prepareEventView() {
+        
     }
     
     //    override func viewDidLayoutSubviews() {
@@ -201,10 +232,10 @@ final class TasksScreenViewController: UIViewController {
     private func getFormattedDateFor(date: Date) {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU") // Устанавливаем локаль для русского языка
-        dateFormatter.dateFormat = "EEEE, d MMMM yyyy 'года'" // Указываем формат даты
+        dateFormatter.dateFormat = "EEEE, d MMMM yyyy" // Указываем формат даты
         
         let formattedDate = dateFormatter.string(from: date)
-        dateLabel.text = formattedDate
+        dateLabel.text = formattedDate.capitalized
     }
     
     func selectCurrentDay() {

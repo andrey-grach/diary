@@ -1,10 +1,3 @@
-//
-//  EventView.swift
-//  Diary
-//
-//  Created by Андрей Грач on 15.12.2024.
-//
-
 import UIKit
 
 //@IBDesignable
@@ -12,23 +5,21 @@ final class EventView: UIView {
     
     @IBOutlet private weak var titleLabel: UILabel!
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        configureView()
-//    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        configureView()
+    override func layoutSubviews() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+//        titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        titleLabel.sizeToFit()
+
     }
     
-    private func configureView() {
-        guard let view = loadViewFromNib(nibName: "EventView") else { return }
-        view.frame = self.bounds
-        addSubview(view)
+    func configure(with title: String) {
+        titleLabel.text = title
     }
-    
-    func configureView(title: String) {
-        self.titleLabel.text = title
+}
+
+extension EventView {
+    static func loadFromNib() -> EventView? {
+        let nib = UINib(nibName: "EventView", bundle: nil)
+        return nib.instantiate(withOwner: nil, options: nil).first as? EventView
     }
 }
