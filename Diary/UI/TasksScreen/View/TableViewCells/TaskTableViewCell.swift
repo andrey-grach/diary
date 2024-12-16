@@ -23,7 +23,7 @@ class TaskTableViewCell: UITableViewCell {
     }
     
     func configureCellWith(taskTitle: String, time: String ) {
-        taskLabel.text = taskTitle
+//        taskLabel.text = taskTitle
         timeLabel.text = time
     }
     

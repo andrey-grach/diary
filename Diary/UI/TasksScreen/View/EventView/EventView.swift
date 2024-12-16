@@ -7,9 +7,7 @@ final class EventView: UIView {
     
     override func layoutSubviews() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         titleLabel.sizeToFit()
-
     }
     
     func configure(with title: String) {

@@ -1,6 +1,6 @@
 import Foundation
 
-struct TasksItem: Codable {
+struct TasksItem: Codable, Equatable {
     let id: Int
     let name: String
     let description: String

@@ -13,7 +13,7 @@ final class TasksScreenViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var dateLabel: UILabel!
-
+    private var associatedKey: UInt8 = 0
     private let presenter: TasksScreenPresenterProtocol
     private let tableAdapter: TasksScreenTableAdapter
     private var tasks: [TasksItem] = []
@@ -23,7 +23,8 @@ final class TasksScreenViewController: UIViewController {
     private var collectionViewCellSize: CGSize = .zero
     private var selectedDate: Date = Date()
     private var selectedCollectionViewCell: IndexPath?
-    
+    private var eventViews: Set<EventView> = []
+
     init(presenter: TasksScreenPresenterProtocol, tableAdapter: TasksScreenTableAdapter) {
         self.presenter = presenter
         self.tableAdapter = tableAdapter
@@ -49,9 +50,9 @@ final class TasksScreenViewController: UIViewController {
 //        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля теста", startHour: 12, duration: 2)
 //        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля теста", startHour: 0, duration: 4)
     // swiftlint:disable:next line_length
-        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для", startHour: 1, duration: 10)
-        //swiftlint:disable:next line_length
-        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДля", startHour: 13, duration: 1)
+//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для", startHour: 1, duration: 10)
+//        //swiftlint:disable:next line_length
+//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДля", startHour: 13, duration: 1)
 
         
 //        eventView.configureView(title: "zxc")
@@ -82,25 +83,135 @@ final class TasksScreenViewController: UIViewController {
         collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
     }
     
-    private func addEvent(title: String, startHour: Int, duration: Int) {
+//    private func addEvent(title: String, startHour: Int, duration: Int) {
+//        guard let eventView = EventView.loadFromNib() else { return }
+//            eventView.configure(with: title)
+//            
+//            // Установите translatesAutoresizingMaskIntoConstraints в false
+//            eventView.translatesAutoresizingMaskIntoConstraints = false
+//            
+//            // Добавьте eventView как подвид к таблице
+//            tableView.addSubview(eventView)
+//            
+//            // Добавьте ограничения для eventView
+//            NSLayoutConstraint.activate([
+//                eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
+//                eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+//                eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
+//                eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
+//                eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+//            ])
+//    }
+    
+//    private func addEvent(title: String, startHour: Int, duration: Int) {
+//        // Удаляем все предыдущие eventView
+//         // Очищаем массив
+//
+//        guard let eventView = EventView.loadFromNib() else { return }
+//        eventView.configure(with: title)
+//        
+//        // Установите translatesAutoresizingMaskIntoConstraints в false
+//        eventView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        // Добавьте eventView как подвид к таблице
+//        tableView.addSubview(eventView)
+//        
+//        // Добавьте ограничения для eventView
+//        NSLayoutConstraint.activate([
+//            eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
+//            eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+//            eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
+//            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
+//            eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+//        ])
+//        
+//        // Сохраняем ссылку на добавленный eventView
+//        eventViews.append(eventView)
+//    }
+    
+//    private func addEvent(taskItem: TasksItem?, startHour: Int, duration: Int) {
+//        guard let eventView = EventView.loadFromNib(), let taskItem  else { return }
+//                
+//        // Настройка заголовка события
+//        eventView.configure(with: taskItem.name)
+//        
+//        // Установите translatesAutoresizingMaskIntoConstraints в false
+//        eventView.translatesAutoresizingMaskIntoConstraints = false
+//        
+//        // Создайте UITapGestureRecognizer
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(eventTapped(_:)))
+//        eventView.addGestureRecognizer(tapGesture) // Добавьте распознаватель жестов к eventView
+//        
+//        // Ассоциируйте задачу с eventView
+//        objc_setAssociatedObject(eventView, &associatedKey, taskItem, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//        
+//        // Добавьте eventView как подвид к таблице
+//        tableView.addSubview(eventView)
+//        
+//        // Добавьте ограничения для eventView
+//        NSLayoutConstraint.activate([
+//            eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
+//            eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+//            eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
+//            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
+//            eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+//        ])
+//        for eventView in eventViews {
+//            eventView.removeFromSuperview()
+//        }
+//        eventViews.removeAll()
+//        // Сохраняем ссылку на добавленный eventView
+//        eventViews.insert(eventView)
+//    }
+    
+    private func addEvent(taskItem: TasksItem?, startHour: Int, duration: Int) {
+        guard let taskItem = taskItem else { return }
+        
+        // Удаляем существующий eventView, если он есть
+        if let existingEventView = eventViews.first(where: { objc_getAssociatedObject($0, &associatedKey) as? TasksItem == taskItem }) {
+            existingEventView.removeFromSuperview()
+            eventViews.remove(existingEventView)
+        }
+        
+        // Создание нового eventView
         guard let eventView = EventView.loadFromNib() else { return }
-            eventView.configure(with: title)
-            
-            // Установите translatesAutoresizingMaskIntoConstraints в false
-            eventView.translatesAutoresizingMaskIntoConstraints = false
-            
-            // Добавьте eventView как подвид к таблице
-            tableView.addSubview(eventView)
-            
-            // Добавьте ограничения для eventView
-            NSLayoutConstraint.activate([
-                eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
-                eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-                eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
-                eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
-                eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-            ])
+        
+        // Настройка заголовка события
+        eventView.configure(with: taskItem.name)
+        eventView.translatesAutoresizingMaskIntoConstraints = false
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(eventTapped(_:)))
+        eventView.addGestureRecognizer(tapGesture)
+        
+        // Ассоциируем задачу с eventView
+        objc_setAssociatedObject(eventView, &associatedKey, taskItem, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        // Добавляем eventView как сабвью таблицы
+        tableView.addSubview(eventView)
+        
+        NSLayoutConstraint.activate([
+            eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 80),
+            eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+            eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
+            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
+            eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+        ])
+        
+        // Сохраняем ссылку на добавленный eventView, чтобы знать что удалять при смене даты.
+        eventViews.insert(eventView)
     }
+
+    
+    @objc private func eventTapped(_ sender: UITapGestureRecognizer) {
+        guard let tappedEventView = sender.view as? EventView,
+              let taskItem = objc_getAssociatedObject(tappedEventView, &associatedKey) as? TasksItem else { return }
+
+        print("Задача нажата: \(taskItem.name)")
+        
+        //TODO: Переход на экран детальки задачи
+//        navigateToTaskDetail(taskItem: taskItem)
+    }
+
+
     
     // Метод для расчета размера ячейки
     private func calculateCollectionViewCellSize() {
@@ -112,10 +223,6 @@ final class TasksScreenViewController: UIViewController {
         let itemWidth = availableWidth / numberOfItemsPerRow // Ширина каждой ячейки
         
         collectionViewCellSize = CGSize(width: itemWidth, height: itemWidth) // Высота может быть равна ширине для квадратных ячеек
-    }
-    
-    private func prepareEventView() {
-        
     }
     
     //    override func viewDidLayoutSubviews() {
@@ -202,7 +309,7 @@ final class TasksScreenViewController: UIViewController {
     //        return hourlyTasks
     //    }
     
-    func prepareTasksFor(date: Date) -> [String?] {
+    func prepareTasksFor(date: Date) -> [TasksItem?] {
         let calendar = Calendar.current
         //        let now = date
         
@@ -217,13 +324,13 @@ final class TasksScreenViewController: UIViewController {
         }
         
         // Создаем массив с 24 элементами (по одному на каждый час)
-        var hourlyTasks: [String?] = Array(repeating: nil, count: 24)
+        var hourlyTasks: [TasksItem?] = Array(repeating: nil, count: 24)
         
         // Группируем задачи по часам
         for task in todayTasks {
             guard let taskDateStart = dateFromTimestamp(task.dateStart) else { continue }
             let hour = calendar.component(.hour, from: taskDateStart)
-            hourlyTasks[hour] = task.name // Сохраняем имя задачи в соответствующий час
+            hourlyTasks[hour] = task // Сохраняем задачу в соответствующий ей час.
         }
         
         return hourlyTasks
@@ -288,13 +395,14 @@ extension TasksScreenViewController: UITableViewDataSource {
         
         // Устанавливаем текст ячейки в зависимости от наличия задачи в этот час
         let hour = indexPath.row // Час, соответствующий текущему индексу
-        let timeInterval = String(format: "%02d:00 - %02d:00", hour, hour + 1) // Форматируем временной интервал
+        let timeInterval = String(format: "%02d:00", hour) // Форматируем временной интервал
         
         let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.identifier, for: indexPath)
         
         if let reusableCell = cell as? TaskTableViewCell {
-            if let taskName = hourlyTasks[hour] {
-                reusableCell.configureCellWith(taskTitle: taskName, time: timeInterval)
+            if let task = hourlyTasks[hour] {
+                reusableCell.configureCellWith(taskTitle: task.name, time: timeInterval)
+                addEvent(taskItem: tasks.first(where: { $0.id == task.id }), startHour: hour, duration: hour)
             } else {
                 reusableCell.configureCellWith(taskTitle: "Нет задач", time: timeInterval) // Отображаем временной интервал
             }
@@ -344,6 +452,10 @@ extension TasksScreenViewController: UICollectionViewDelegate {
         collectionView.deselectItem(at: indexPath, animated: true)
         selectedDate = days[indexPath.item].0
         selectedCollectionViewCell = indexPath
+        for eventView in eventViews {
+            eventView.removeFromSuperview()
+        }
+        eventViews.removeAll()
         tableView.reloadData()
         collectionView.reloadData()
     }
