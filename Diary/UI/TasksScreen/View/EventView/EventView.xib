@@ -16,9 +16,15 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hH-5n-csc">
-                    <rect key="frame" x="0.0" y="0.0" width="290" height="20.333333333333332"/>
+                    <rect key="frame" x="16" y="22" width="298" height="19.333333333333332"/>
                     <color key="tintColor" systemColor="tintColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xNr-1z-nwC">
+                    <rect key="frame" x="16" y="6" width="330" height="14.333333333333334"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -26,13 +32,22 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" red="0.51572199860000001" green="1" blue="0.52992329029999996" alpha="0.40105028970000001" colorSpace="custom" customColorSpace="displayP3"/>
             <constraints>
-                <constraint firstItem="0hH-5n-csc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6UX-fl-jJX"/>
+                <constraint firstAttribute="trailing" secondItem="xNr-1z-nwC" secondAttribute="trailing" constant="-16" id="3rq-uI-8Eh"/>
+                <constraint firstItem="0hH-5n-csc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="22" id="6UX-fl-jJX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0hH-5n-csc" secondAttribute="bottom" id="Q8N-3J-vxV"/>
-                <constraint firstItem="0hH-5n-csc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="h6U-EL-bNF"/>
-                <constraint firstItem="0hH-5n-csc" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-40" id="kzs-Hg-zei"/>
+                <constraint firstItem="xNr-1z-nwC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="TjH-Bn-Cn9"/>
+                <constraint firstItem="0hH-5n-csc" firstAttribute="top" secondItem="xNr-1z-nwC" secondAttribute="bottom" constant="1.6666666666666643" id="Zhx-oq-zft"/>
+                <constraint firstItem="0hH-5n-csc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="h6U-EL-bNF"/>
+                <constraint firstItem="0hH-5n-csc" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-16" id="kzs-Hg-zei"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                    <real key="value" value="12"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="timeLabel" destination="xNr-1z-nwC" id="8qc-JW-uSp"/>
                 <outlet property="titleLabel" destination="0hH-5n-csc" id="SZG-r9-1jQ"/>
             </connections>
             <point key="canvasLocation" x="35.114503816793892" y="221.83098591549296"/>

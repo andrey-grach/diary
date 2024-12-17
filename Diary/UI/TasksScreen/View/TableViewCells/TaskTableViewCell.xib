@@ -33,7 +33,7 @@
             <connections>
                 <outlet property="timeLabel" destination="Iut-5Z-Tsw" id="msC-VS-7v1"/>
             </connections>
-            <point key="canvasLocation" x="131" y="-12"/>
+            <point key="canvasLocation" x="127" y="-25"/>
         </tableViewCell>
     </objects>
 </document>

@@ -164,11 +164,14 @@ final class TasksScreenViewController: UIViewController {
 //        eventViews.insert(eventView)
 //    }
     
+    // ТОЧНО ЛИ НУЖНО ПЕРЕДАВАТЬ startHour?
     private func addEvent(taskItem: TasksItem?, startHour: Int, duration: Int) {
         guard let taskItem = taskItem else { return }
         
         // Удаляем существующий eventView, если он есть
-        if let existingEventView = eventViews.first(where: { objc_getAssociatedObject($0, &associatedKey) as? TasksItem == taskItem }) {
+        if let existingEventView = eventViews.first(where: {
+            objc_getAssociatedObject($0, &associatedKey) as? TasksItem == taskItem
+        }) {
             existingEventView.removeFromSuperview()
             eventViews.remove(existingEventView)
         }
@@ -176,8 +179,43 @@ final class TasksScreenViewController: UIViewController {
         // Создание нового eventView
         guard let eventView = EventView.loadFromNib() else { return }
         
+        guard let dateStart = Int(taskItem.dateStart), let dateFinish = Int(taskItem.dateFinish) else { return }
+//        // Вычисление длительности в секундах
+//        let durationInSeconds = dateFinish - dateStart
+//        // Преобразование длительности в часы
+//        let durationInHours = durationInSeconds / 3600
+        let cellHeight: CGFloat = 44.0
+
+        // Вычисление длительности в секундах
+        let durationInSeconds = dateFinish - dateStart
+
+        // Преобразование длительности в часы и минуты
+        let durationInHours = durationInSeconds / 3600
+        let durationInMinutes = (durationInSeconds % 3600) / 60
+        // Предположим, что 44 - это высота в пикселях для одного часа
+//        let heightPerHour: CGFloat = 44.0
+        // Высота для одной минуты будет равна высоте за час, деленной на 60
+        let heightPerMinute: CGFloat = cellHeight / 60.0
+
+        // Общая высота
+        let totalHeight = CGFloat(durationInHours) * cellHeight + CGFloat(durationInMinutes) * heightPerMinute
+
+
+        let eventStartHour = taskItem.dateStart
+        
+        let calendar = Calendar.current
+        guard let date = dateFromTimestamp(eventStartHour) else { return }
+
+        let components = calendar.dateComponents([.hour, .minute], from: date)
+        guard let hour = components.hour, let minute = components.minute else {
+            return
+        }
+        
+        let totalMinutes = hour * 60 + minute
+        let topOffset = CGFloat(totalMinutes) * cellHeight / 60.0
+
         // Настройка заголовка события
-        eventView.configure(with: taskItem.name)
+        eventView.configure(timeStart: taskItem.dateStart, timeFinish: taskItem.dateFinish, title: taskItem.name)
         eventView.translatesAutoresizingMaskIntoConstraints = false
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(eventTapped(_:)))
         eventView.addGestureRecognizer(tapGesture)
@@ -191,9 +229,8 @@ final class TasksScreenViewController: UIViewController {
         NSLayoutConstraint.activate([
             eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 80),
             eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-            eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
-            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
-            eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
+            eventView.heightAnchor.constraint(equalToConstant: totalHeight),
+            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: topOffset)
         ])
         
         // Сохраняем ссылку на добавленный eventView, чтобы знать что удалять при смене даты.

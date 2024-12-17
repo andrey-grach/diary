@@ -23,9 +23,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EBR-Xm-efd">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBR-Xm-efd">
                     <rect key="frame" x="0.0" y="148.33333333333331" width="393" height="669.66666666666674"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="PTm-8o-iSc"/>
                         <outlet property="delegate" destination="-1" id="Ds3-Jr-y0t"/>
@@ -55,14 +54,14 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="EBR-Xm-efd" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="3zg-8U-ZO5"/>
+                <constraint firstItem="o0c-p6-D1k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2pI-4p-ee8"/>
                 <constraint firstItem="1if-jd-gZs" firstAttribute="top" secondItem="o0c-p6-D1k" secondAttribute="bottom" id="7KR-Qk-PkQ"/>
-                <constraint firstItem="o0c-p6-D1k" firstAttribute="leading" secondItem="EBR-Xm-efd" secondAttribute="leading" id="Oxy-U8-o2A"/>
-                <constraint firstItem="1if-jd-gZs" firstAttribute="trailing" secondItem="o0c-p6-D1k" secondAttribute="trailing" id="SMu-Kf-hSc"/>
+                <constraint firstItem="EBR-Xm-efd" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Ncx-Ms-do2"/>
+                <constraint firstItem="o0c-p6-D1k" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SD8-di-2aJ"/>
                 <constraint firstItem="EBR-Xm-efd" firstAttribute="top" secondItem="o0c-p6-D1k" secondAttribute="bottom" constant="30.333333333333314" id="TNy-nS-bG3"/>
-                <constraint firstItem="o0c-p6-D1k" firstAttribute="trailing" secondItem="EBR-Xm-efd" secondAttribute="trailing" id="kMx-FG-0CM"/>
+                <constraint firstItem="EBR-Xm-efd" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ThJ-Q7-hBz"/>
+                <constraint firstItem="EBR-Xm-efd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bEM-Wa-lsI"/>
                 <constraint firstItem="EBR-Xm-efd" firstAttribute="top" secondItem="1if-jd-gZs" secondAttribute="bottom" constant="0.33333333333331439" id="mlx-pK-jrP"/>
-                <constraint firstItem="1if-jd-gZs" firstAttribute="leading" secondItem="o0c-p6-D1k" secondAttribute="leading" id="nPj-hp-rhl"/>
                 <constraint firstItem="1if-jd-gZs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qyL-qT-ySm"/>
                 <constraint firstItem="o0c-p6-D1k" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="smL-5a-xPo"/>
                 <constraint firstAttribute="trailing" secondItem="1if-jd-gZs" secondAttribute="trailing" id="yV3-WP-Jwx"/>
