@@ -14,7 +14,8 @@
 		3E0E9AF02D0F3A68001720BF /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9AED2D0F3A68001720BF /* TaskTableViewCell.swift */; };
 		3E0E9AFD2D0F6881001720BF /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9AFC2D0F6881001720BF /* EventView.swift */; };
 		3E0E9AFF2D0F6898001720BF /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AFE2D0F6898001720BF /* EventView.xib */; };
-		3E0E9B012D0F692C001720BF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9B002D0F692C001720BF /* UIViewExtension.swift */; };
+		3E1152DE2D11F385002E58ED /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1152DD2D11F385002E58ED /* DateHelper.swift */; };
+		3E1152E12D11FFFE002E58ED /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1152E02D11FFFE002E58ED /* String+Extensions.swift */; };
 		3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29C09F2D0DB0F100431156 /* CalendarManager.swift */; };
 		3E6951312D087CC800587837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6951302D087CC800587837 /* AppDelegate.swift */; };
 		3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E6951392D087CCA00587837 /* Assets.xcassets */; };
@@ -64,7 +65,8 @@
 		3E0E9AEE2D0F3A68001720BF /* TaskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTableViewCell.xib; sourceTree = "<group>"; };
 		3E0E9AFC2D0F6881001720BF /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		3E0E9AFE2D0F6898001720BF /* EventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventView.xib; sourceTree = "<group>"; };
-		3E0E9B002D0F692C001720BF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		3E1152DD2D11F385002E58ED /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		3E1152E02D11FFFE002E58ED /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3E29C09F2D0DB0F100431156 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		3E69512D2D087CC800587837 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6951302D087CC800587837 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,9 +154,16 @@
 			children = (
 				3E0E9AFC2D0F6881001720BF /* EventView.swift */,
 				3E0E9AFE2D0F6898001720BF /* EventView.xib */,
-				3E0E9B002D0F692C001720BF /* UIViewExtension.swift */,
 			);
 			path = EventView;
+			sourceTree = "<group>";
+		};
+		3E1152DF2D11FFEE002E58ED /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3E1152E02D11FFFE002E58ED /* String+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		3E29C09E2D0DB0B400431156 /* CalendarManager */ = {
@@ -199,6 +208,7 @@
 		3E69512F2D087CC800587837 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
+				3E1152DF2D11FFEE002E58ED /* Extensions */,
 				3EA365D72D0CBC84009192EE /* Helpers */,
 				3EA365D02D0CB8CF009192EE /* UI */,
 				3EA365CF2D0CB86A009192EE /* Models */,
@@ -285,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				3EA365D82D0CBC98009192EE /* LossyCodableList.swift */,
+				3E1152DD2D11F385002E58ED /* DateHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -567,11 +578,12 @@
 				3EBC87E82D0B7CC200BF70BF /* TasksScreenViewController.swift in Sources */,
 				3EA365D62D0CBAA3009192EE /* TasksItem.swift in Sources */,
 				3EA365D92D0CBC98009192EE /* LossyCodableList.swift in Sources */,
+				3E1152E12D11FFFE002E58ED /* String+Extensions.swift in Sources */,
 				3EA280952D0C4030003A2433 /* TasksScreenRouter.swift in Sources */,
 				3EA280972D0C404D003A2433 /* TasksScreenAssembly.swift in Sources */,
-				3E0E9B012D0F692C001720BF /* UIViewExtension.swift in Sources */,
 				3EA280912D0C3FFF003A2433 /* TasksScreenModels.swift in Sources */,
 				3EA280992D0C405C003A2433 /* TasksScreenTableAdapter.swift in Sources */,
+				3E1152DE2D11F385002E58ED /* DateHelper.swift in Sources */,
 				3EA365D42D0CB947009192EE /* TasksResponse.swift in Sources */,
 				3E0E9AFD2D0F6881001720BF /* EventView.swift in Sources */,
 				3E6951312D087CC800587837 /* AppDelegate.swift in Sources */,

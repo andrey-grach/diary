@@ -10,7 +10,7 @@ final class DiaryService {
 
 extension DiaryService: DiaryServiceProtocol {
     func getTasks(completion: @escaping (Result<TasksResponse, any Error>) -> Void) {
-        let urlString = "https://jsonhost.com/json/becce68a4b16e6d6ad71e43cbd5de447"
+        let urlString = "https://jsonhost.com/json/18e93f834f1908bee5dac2e6dd0520f1"
         guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, _, error in

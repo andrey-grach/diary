@@ -1,9 +1,7 @@
 import UIKit
 
-class TaskTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var taskLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+final class TaskTableViewCell: UITableViewCell {
+    @IBOutlet private weak var timeLabel: UILabel!
     
     static let identifier = "TaskTableViewCell"
     
@@ -15,16 +13,8 @@ class TaskTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
-    func configureCellWith(taskTitle: String, time: String ) {
-//        taskLabel.text = taskTitle
+    func configureCellWith(time: String ) {
         timeLabel.text = time
     }
-    
 }

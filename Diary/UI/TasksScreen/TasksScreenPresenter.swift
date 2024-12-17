@@ -9,8 +9,6 @@ final class TasksScreenPresenter {
     private let router: TasksScreenRouterProtocol
     private let service: DiaryServiceProtocol
     
-//    private(set) var tasks: TasksResponse?
-    
     private(set) var state: TasksScreenModels.State = .default {
         didSet {
             view?.handleState(state)

@@ -10,6 +10,17 @@ protocol TasksScreenPresenterProtocol {
 }
 
 final class TasksScreenViewController: UIViewController {
+    
+    struct Constants {
+        static let tableViewCellHeight: CGFloat = 44.0
+        static let secondsInOneHour = 3600
+        static let minutsInOneHour = 60
+        static let spaceForTimeLabel: CGFloat = 80.0
+        static let hoursInDay = 24
+        static let numberOfIndentsInCollectionView: CGFloat = 6
+        static let indentWidth: CGFloat = 6.0
+    }
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var dateLabel: UILabel!
@@ -44,34 +55,9 @@ final class TasksScreenViewController: UIViewController {
         prepareCollectionView()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         days = calendarManager.getDaysInCurrentMonth()
         selectCurrentDay()
-//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля теста", startHour: 12, duration: 2)
-//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля тестаДля теста", startHour: 0, duration: 4)
-    // swiftlint:disable:next line_length
-//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста ДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для", startHour: 1, duration: 10)
-//        //swiftlint:disable:next line_length
-//        addEvent(title: "Для теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДляДля теста Для теста Для теста Для теста Для тестаДля тестаДля", startHour: 13, duration: 1)
-
-        
-//        eventView.configureView(title: "zxc")
-        
-        // Вычисляем ширину ячейки только один раз
-        //        let totalWidth = collectionView.bounds.width
-        //        let numberOfItemsPerRow: CGFloat = 9
-        //        collectionCellWidth = totalWidth / numberOfItemsPerRow
-        //        calculateCollectionViewCellSize()
     }
-    
-    //    override func viewWillLayoutSubviews() {
-    //        super.viewWillLayoutSubviews()
-    //
-    //        // Вычисляем ширину ячейки только один раз
-    //        calculateCollectionViewCellSize()
-    //        collectionView.collectionViewLayout.invalidateLayout()
-    //    }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         calculateCollectionViewCellSize()
@@ -80,163 +66,86 @@ final class TasksScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
+        guard let selectedCollectionViewCell = selectedCollectionViewCell else { return }
+        collectionView.scrollToItem(
+            at: selectedCollectionViewCell,
+            at: .centeredHorizontally,
+            animated: true
+        )
     }
     
-//    private func addEvent(title: String, startHour: Int, duration: Int) {
-//        guard let eventView = EventView.loadFromNib() else { return }
-//            eventView.configure(with: title)
-//            
-//            // Установите translatesAutoresizingMaskIntoConstraints в false
-//            eventView.translatesAutoresizingMaskIntoConstraints = false
-//            
-//            // Добавьте eventView как подвид к таблице
-//            tableView.addSubview(eventView)
-//            
-//            // Добавьте ограничения для eventView
-//            NSLayoutConstraint.activate([
-//                eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
-//                eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-//                eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
-//                eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
-//                eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-//            ])
-//    }
-    
-//    private func addEvent(title: String, startHour: Int, duration: Int) {
-//        // Удаляем все предыдущие eventView
-//         // Очищаем массив
-//
-//        guard let eventView = EventView.loadFromNib() else { return }
-//        eventView.configure(with: title)
-//        
-//        // Установите translatesAutoresizingMaskIntoConstraints в false
-//        eventView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        // Добавьте eventView как подвид к таблице
-//        tableView.addSubview(eventView)
-//        
-//        // Добавьте ограничения для eventView
-//        NSLayoutConstraint.activate([
-//            eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
-//            eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-//            eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
-//            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
-//            eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-//        ])
-//        
-//        // Сохраняем ссылку на добавленный eventView
-//        eventViews.append(eventView)
-//    }
-    
-//    private func addEvent(taskItem: TasksItem?, startHour: Int, duration: Int) {
-//        guard let eventView = EventView.loadFromNib(), let taskItem  else { return }
-//                
-//        // Настройка заголовка события
-//        eventView.configure(with: taskItem.name)
-//        
-//        // Установите translatesAutoresizingMaskIntoConstraints в false
-//        eventView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        // Создайте UITapGestureRecognizer
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(eventTapped(_:)))
-//        eventView.addGestureRecognizer(tapGesture) // Добавьте распознаватель жестов к eventView
-//        
-//        // Ассоциируйте задачу с eventView
-//        objc_setAssociatedObject(eventView, &associatedKey, taskItem, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-//        
-//        // Добавьте eventView как подвид к таблице
-//        tableView.addSubview(eventView)
-//        
-//        // Добавьте ограничения для eventView
-//        NSLayoutConstraint.activate([
-//            eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 40),
-//            eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-//            eventView.heightAnchor.constraint(equalToConstant: CGFloat(duration * 50)), // Высота события
-//            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: CGFloat(startHour * 50)), // Позиция Y
-//            eventView.widthAnchor.constraint(equalTo: tableView.widthAnchor)
-//        ])
-//        for eventView in eventViews {
-//            eventView.removeFromSuperview()
-//        }
-//        eventViews.removeAll()
-//        // Сохраняем ссылку на добавленный eventView
-//        eventViews.insert(eventView)
-//    }
-    
-    // ТОЧНО ЛИ НУЖНО ПЕРЕДАВАТЬ startHour?
-    private func addEvent(taskItem: TasksItem?, startHour: Int, duration: Int) {
+    private func addEvent(taskItem: TasksItem?) {
         guard let taskItem = taskItem else { return }
         
         // Удаляем существующий eventView, если он есть
+        removeExistingEventView(for: taskItem)
+        
+        // Создание нового eventView
+        guard let eventView = EventView.loadFromNib() else { return }
+        
+        // Получаем дату начала и конца события
+        guard let dateStart = Int(taskItem.dateStart), let dateFinish = Int(taskItem.dateFinish) else { return }
+        
+        // Вычисляем длительность в секундах
+        let totalHeight = calculateEventViewHeight(dateStart: dateStart, dateFinish: dateFinish)
+        
+        // Получаем верхний отступ
+        guard let topOffset = calculateEventViewTopOffset(from: taskItem.dateStart) else { return }
+
+        // Настройка заголовка события
+        configureEventView(eventView, with: taskItem)
+        
+        // Добавляем eventView как сабвью таблицы
+        tableView.addSubview(eventView)
+        
+        NSLayoutConstraint.activate([
+            eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: Constants.spaceForTimeLabel),
+            eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
+            eventView.heightAnchor.constraint(equalToConstant: totalHeight),
+            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: topOffset)
+        ])
+        
+        // Сохраняем ссылку на добавленный eventView
+        eventViews.insert(eventView)
+    }
+
+    private func removeExistingEventView(for taskItem: TasksItem) {
         if let existingEventView = eventViews.first(where: {
             objc_getAssociatedObject($0, &associatedKey) as? TasksItem == taskItem
         }) {
             existingEventView.removeFromSuperview()
             eventViews.remove(existingEventView)
         }
-        
-        // Создание нового eventView
-        guard let eventView = EventView.loadFromNib() else { return }
-        
-        guard let dateStart = Int(taskItem.dateStart), let dateFinish = Int(taskItem.dateFinish) else { return }
-//        // Вычисление длительности в секундах
-//        let durationInSeconds = dateFinish - dateStart
-//        // Преобразование длительности в часы
-//        let durationInHours = durationInSeconds / 3600
-        let cellHeight: CGFloat = 44.0
-
-        // Вычисление длительности в секундах
-        let durationInSeconds = dateFinish - dateStart
-
-        // Преобразование длительности в часы и минуты
-        let durationInHours = durationInSeconds / 3600
-        let durationInMinutes = (durationInSeconds % 3600) / 60
-        // Предположим, что 44 - это высота в пикселях для одного часа
-//        let heightPerHour: CGFloat = 44.0
-        // Высота для одной минуты будет равна высоте за час, деленной на 60
-        let heightPerMinute: CGFloat = cellHeight / 60.0
-
-        // Общая высота
-        let totalHeight = CGFloat(durationInHours) * cellHeight + CGFloat(durationInMinutes) * heightPerMinute
-
-
-        let eventStartHour = taskItem.dateStart
-        
-        let calendar = Calendar.current
-        guard let date = dateFromTimestamp(eventStartHour) else { return }
-
-        let components = calendar.dateComponents([.hour, .minute], from: date)
-        guard let hour = components.hour, let minute = components.minute else {
-            return
-        }
-        
-        let totalMinutes = hour * 60 + minute
-        let topOffset = CGFloat(totalMinutes) * cellHeight / 60.0
-
-        // Настройка заголовка события
-        eventView.configure(timeStart: taskItem.dateStart, timeFinish: taskItem.dateFinish, title: taskItem.name)
-        eventView.translatesAutoresizingMaskIntoConstraints = false
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(eventTapped(_:)))
-        eventView.addGestureRecognizer(tapGesture)
-        
-        // Ассоциируем задачу с eventView
-        objc_setAssociatedObject(eventView, &associatedKey, taskItem, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        
-        // Добавляем eventView как сабвью таблицы
-        tableView.addSubview(eventView)
-        
-        NSLayoutConstraint.activate([
-            eventView.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 80),
-            eventView.trailingAnchor.constraint(equalTo: tableView.trailingAnchor),
-            eventView.heightAnchor.constraint(equalToConstant: totalHeight),
-            eventView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: topOffset)
-        ])
-        
-        // Сохраняем ссылку на добавленный eventView, чтобы знать что удалять при смене даты.
-        eventViews.insert(eventView)
     }
 
+    private func calculateEventViewHeight(dateStart: Int, dateFinish: Int) -> CGFloat {
+        let cellHeight: CGFloat = Constants.tableViewCellHeight
+        let durationInSeconds = dateFinish - dateStart
+        let durationInHours = durationInSeconds / Constants.secondsInOneHour
+        let durationInMinutes = (durationInSeconds % Constants.secondsInOneHour) / Constants.minutsInOneHour
+        let heightPerMinute: CGFloat = cellHeight / CGFloat(Constants.minutsInOneHour)
+        
+        return CGFloat(durationInHours) * cellHeight + CGFloat(durationInMinutes) * heightPerMinute
+    }
+
+    private func calculateEventViewTopOffset(from timestamp: String) -> CGFloat? {
+        guard let date = DateHelper.getDate(fromTimestamp: timestamp) else { return nil }
+        let calendarComponents: Set<Calendar.Component> = [.hour, .minute]
+        let dateComponents = calendarManager.getDateComponentsFor(calendarComponents: calendarComponents, date: date)
+        guard let hour = dateComponents.hour, let minute = dateComponents.minute else { return nil }
+        let totalMinutes = hour * Constants.minutsInOneHour + minute
+        return CGFloat(totalMinutes) * Constants.tableViewCellHeight / CGFloat(Constants.minutsInOneHour)
+    }
+
+    private func configureEventView(_ eventView: EventView, with taskItem: TasksItem) {
+        eventView.configure(timeStart: taskItem.dateStart, timeFinish: taskItem.dateFinish, title: taskItem.name)
+        eventView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(eventTapped(_:)))
+        eventView.addGestureRecognizer(tapGesture)
+
+        objc_setAssociatedObject(eventView, &associatedKey, taskItem, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
     
     @objc private func eventTapped(_ sender: UITapGestureRecognizer) {
         guard let tappedEventView = sender.view as? EventView,
@@ -247,13 +156,11 @@ final class TasksScreenViewController: UIViewController {
         //TODO: Переход на экран детальки задачи
 //        navigateToTaskDetail(taskItem: taskItem)
     }
-
-
     
     // Метод для расчета размера ячейки
     private func calculateCollectionViewCellSize() {
         let width = collectionView.bounds.width
-        let padding: CGFloat = 6 * 6 // Отступы (с учетом межстрочного расстояния)
+        let padding: CGFloat = Constants.numberOfIndentsInCollectionView * Constants.indentWidth // Отступы (с учетом межстрочного расстояния)
         let availableWidth = width - padding // Доступная ширина для ячеек
         
         let numberOfItemsPerRow: CGFloat = 7 // Количество ячеек в строке
@@ -261,17 +168,6 @@ final class TasksScreenViewController: UIViewController {
         
         collectionViewCellSize = CGSize(width: itemWidth, height: itemWidth) // Высота может быть равна ширине для квадратных ячеек
     }
-    
-    //    override func viewDidLayoutSubviews() {
-    //        super.viewDidLayoutSubviews()
-    //        collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
-    //    }
-    // Обновление размера при изменении ориентации или изменении размера
-    //    override func viewDidLayoutSubviews() {
-    //        super.viewDidLayoutSubviews()
-    //        calculateItemSize() // Пересчитываем размер при изменении размеров
-    //        collectionView.collectionViewLayout.invalidateLayout() // Обновляем макет коллекции
-    //    }
     
     private func prepareTableView() {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -281,7 +177,6 @@ final class TasksScreenViewController: UIViewController {
     private func prepareCollectionView() {
         collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: "MyCollectionViewCell")
     }
-    
     
     // TODO: Loading indicator
     private func startLoading() {
@@ -295,57 +190,6 @@ final class TasksScreenViewController: UIViewController {
     private func showErrorAlert() {
     }
     
-    //    func filterTasks(for date: Date) {
-    //        // Преобразуйте дату в нужный формат (например, timestamp)
-    //        let calendar = Calendar.current
-    //        let startOfDay = calendar.startOfDay(for: date)
-    //
-    //        // Фильтрация задач по дате
-    //        let filteredTasks = tasks.filter { task in
-    //            // Предполагается, что task имеет свойство timestamp
-    //            return task.timestamp >= startOfDay.timeIntervalSince1970 && task.timestamp < startOfDay.addingTimeInterval(86400).timeIntervalSince1970
-    //        }
-    //    }
-    
-    // Функция для преобразования строки даты в объект Date
-    //    func dateFromString(_ dateString: String) -> Date? {
-    //        let dateFormatter = DateFormatter()
-    //        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Пример формата даты
-    //        return dateFormatter.date(from: dateString)
-    //    }
-    
-    func dateFromTimestamp(_ timestamp: String) -> Date? {
-        guard let timeInterval = TimeInterval(timestamp) else { return nil }
-        return Date(timeIntervalSince1970: timeInterval)
-    }
-    
-    //    func tasksForToday() -> [String?] {
-    //        let calendar = Calendar.current
-    //        let now = Date()
-    //
-    //        // Получаем начало и конец текущего дня
-    //        let startOfDay = calendar.startOfDay(for: now)
-    //        let endOfDay = calendar.date(byAdding: .day, value: 1, to: startOfDay)!
-    //
-    //        // Фильтруем задачи для текущего дня
-    //        let todayTasks = tasks.filter { task in
-    //            guard let taskDateStart = dateFromString(task.dateStart) else { return false }
-    //            return taskDateStart >= startOfDay && taskDateStart < endOfDay
-    //        }
-    //
-    //        // Создаем массив с 24 элементами (по одному на каждый час)
-    //        var hourlyTasks: [String?] = Array(repeating: nil, count: 24)
-    //
-    //        // Группируем задачи по часам
-    //        for task in todayTasks {
-    //            guard let taskDateStart = dateFromString(task.dateStart) else { continue }
-    //            let hour = calendar.component(.hour, from: taskDateStart)
-    //            hourlyTasks[hour] = task.name // Сохраняем имя задачи в соответствующий час
-    //        }
-    //
-    //        return hourlyTasks
-    //    }
-    
     func prepareTasksFor(date: Date) -> [TasksItem?] {
         let calendar = Calendar.current
         //        let now = date
@@ -356,16 +200,16 @@ final class TasksScreenViewController: UIViewController {
         
         // Фильтруем задачи для текущего дня
         let todayTasks = tasks.filter { task in
-            guard let taskDateStart = dateFromTimestamp(task.dateStart) else { return false }
+            guard let taskDateStart = DateHelper.getDate(fromTimestamp: task.dateStart) else { return false }
             return taskDateStart >= startOfDay && taskDateStart < endOfDay
         }
         
         // Создаем массив с 24 элементами (по одному на каждый час)
-        var hourlyTasks: [TasksItem?] = Array(repeating: nil, count: 24)
+        var hourlyTasks: [TasksItem?] = Array(repeating: nil, count: Constants.hoursInDay)
         
         // Группируем задачи по часам
         for task in todayTasks {
-            guard let taskDateStart = dateFromTimestamp(task.dateStart) else { continue }
+            guard let taskDateStart = DateHelper.getDate(fromTimestamp: task.dateStart) else { continue }
             let hour = calendar.component(.hour, from: taskDateStart)
             hourlyTasks[hour] = task // Сохраняем задачу в соответствующий ей час.
         }
@@ -373,31 +217,25 @@ final class TasksScreenViewController: UIViewController {
         return hourlyTasks
     }
     
-    private func getFormattedDateFor(date: Date) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ru_RU") // Устанавливаем локаль для русского языка
-        dateFormatter.dateFormat = "EEEE, d MMMM yyyy" // Указываем формат даты
-        
-        let formattedDate = dateFormatter.string(from: date)
-        dateLabel.text = formattedDate.capitalized
+    private func getFormattedDateFor(date: Date, format: DateTimeFormat) -> String {
+         DateHelper.getString(fromDate: date, format: format).capitalized
     }
     
     func selectCurrentDay() {
         let calendar = Calendar.current
         let today = Date()
         
-        getFormattedDateFor(date: today)
-        // Находим индекс текущего дня в массиве
+        dateLabel.text = getFormattedDateFor(date: today, format: .EEEEColondMMMMyyyy)
+        
         if let index = days.firstIndex(where: { calendar.isDate($0.0, inSameDayAs: today) }) {
             selectedCollectionViewCell = IndexPath(item: index, section: 0)
             collectionView.reloadData()
             collectionView.layoutIfNeeded()
-            collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredHorizontally, animated: true)
-            //            DispatchQueue.main.async {
-            //                self.collectionView.reloadData()
-            //                self.collectionView.scrollToItem(at: self.selectedCollectionViewCell!, at: .centeredVertically, animated: true)
-            //                self.collectionView.reloadData()
-            //            }
+            collectionView.scrollToItem(
+                at: IndexPath(item: index, section: 0),
+                at: .centeredHorizontally,
+                animated: true
+            )
         }
     }
 }
@@ -424,7 +262,7 @@ extension TasksScreenViewController: TasksScreenViewInput {
 
 extension TasksScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        24
+        Constants.hoursInDay
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -438,15 +276,13 @@ extension TasksScreenViewController: UITableViewDataSource {
         
         if let reusableCell = cell as? TaskTableViewCell {
             if let task = hourlyTasks[hour] {
-                reusableCell.configureCellWith(taskTitle: task.name, time: timeInterval)
-                addEvent(taskItem: tasks.first(where: { $0.id == task.id }), startHour: hour, duration: hour)
+                reusableCell.configureCellWith(time: timeInterval)
+                addEvent(taskItem: tasks.first(where: { $0.id == task.id }))
             } else {
-                reusableCell.configureCellWith(taskTitle: "Нет задач", time: timeInterval) // Отображаем временной интервал
+                reusableCell.configureCellWith(time: timeInterval) // Отображаем временной интервал
             }
         }
-        
         return cell
-        
     }
 }
 
@@ -468,16 +304,11 @@ extension TasksScreenViewController: UICollectionViewDataSource {
         let day = dayTuple.1
         
         if let reusableCell = cell as? MyCollectionViewCell {
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "ru_RU")
-            dateFormatter.dateFormat = "EEE"
-            let weekdayString = dateFormatter.string(from: date)
-            
+            let weekdayString = getFormattedDateFor(date: date, format: .EEE)
             reusableCell.configureWith(dayNumber: String(day), dayTitle: weekdayString)
-            
             if indexPath == selectedCollectionViewCell {
-                reusableCell.setSelected(true)
-                getFormattedDateFor(date: date)
+                reusableCell.setSelected()
+                dateLabel.text = getFormattedDateFor(date: date, format: .EEEEColondMMMMyyyy)
             }
         }
         return cell
@@ -502,16 +333,16 @@ extension TasksScreenViewController: UICollectionViewDelegateFlowLayout {
     
     // Метод для задания минимального расстояния между строками
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 6
+        Constants.indentWidth
     }
     
     // Метод для задания минимального расстояния между ячейками
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        0
     }
     
     // Метод для задания размера ячейки
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionViewCellSize
+        collectionViewCellSize
     }
 }

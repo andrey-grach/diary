@@ -20,4 +20,8 @@ final class CalendarManager {
         }
         return days
     }
+    
+    func getDateComponentsFor(calendarComponents: Set<Calendar.Component>, date: Date) -> DateComponents {
+        calendar.dateComponents(calendarComponents, from: date)
+    }
 }

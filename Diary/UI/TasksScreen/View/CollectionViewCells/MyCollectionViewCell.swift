@@ -1,8 +1,8 @@
 import UIKit
 
-class MyCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var weekDayLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+final class MyCollectionViewCell: UICollectionViewCell {
+    @IBOutlet private weak var weekDayLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -20,12 +20,8 @@ class MyCollectionViewCell: UICollectionViewCell {
         dateLabel.text = dayNumber
     }
     
-    func setSelected(_ selected: Bool) {
-        if selected {
-            selectCell()
-        } else {
-            deselectCell()
-        }
+    func setSelected() {
+        selectCell()
     }
     
     private func selectCell() {
