@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ActivityIndicatorView" customModule="Diary" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-KX-NhR">
+                    <rect key="frame" x="186" y="416" width="20" height="20"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="TIE-KX-NhR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="186" id="BF3-eu-EwR"/>
+                <constraint firstItem="TIE-KX-NhR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="357" id="KEQ-jB-BFV"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="TIE-KX-NhR" secondAttribute="bottom" constant="382" id="mcX-zg-tdG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TIE-KX-NhR" secondAttribute="trailing" constant="187" id="uyj-7a-zW0"/>
+            </constraints>
+            <connections>
+                <outlet property="activityIndicator" destination="TIE-KX-NhR" id="rbb-BS-Mni"/>
+            </connections>
+            <point key="canvasLocation" x="138" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

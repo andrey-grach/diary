@@ -10,8 +10,15 @@ final class TasksScreenAssembly: ScreenAssembly {
         let service = DiaryService()
         let presenter = TasksScreenPresenter(router: router, service: service)
         let tableAdapter = TasksScreenTableAdapter()
-        let view = TasksScreenViewController(presenter: presenter, tableAdapter: tableAdapter)
+        let collectionAdapter = TasksScreenCollectionAdapter()
+        let view = TasksScreenViewController(
+            presenter: presenter,
+            tableAdapter: tableAdapter,
+            collectionAdapter: collectionAdapter
+        )
         presenter.view = view
+        tableAdapter.presenter = presenter
+        collectionAdapter.presenter = presenter
         
         return view
     }

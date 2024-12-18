@@ -50,14 +50,4 @@ final class DateHelper {
         guard let timeInterval = TimeInterval(timestamp) else { return nil }
         return Date(timeIntervalSince1970: timeInterval)
     }
-    
-//    static func getFormatted(
-//        fromDate date: Date?,
-//        format: DateTimeFormat,
-//        timeZone: TimeZone = .current
-//    ) -> String? {
-//        let dateFormatter = dateFormatter(timeZone: timeZone)
-//        dateFormatter.dateFormat = format.make()
-//        return dateFormatter.string(from: date)
-//    }
 }
