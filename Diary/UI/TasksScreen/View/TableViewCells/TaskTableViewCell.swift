@@ -1,9 +1,8 @@
 import UIKit
 
 final class TaskTableViewCell: UITableViewCell {
-    @IBOutlet private weak var timeLabel: UILabel!
-    
     static let identifier = "TaskTableViewCell"
+    @IBOutlet private weak var timeLabel: UILabel!
     
     static func nib() -> UINib {
         UINib(nibName: identifier, bundle: nil)

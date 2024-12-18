@@ -1,6 +1,7 @@
 import UIKit
 
 final class MyCollectionViewCell: UICollectionViewCell {
+    static let identifier = "MyCollectionViewCell"
     @IBOutlet private weak var weekDayLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
@@ -12,7 +13,7 @@ final class MyCollectionViewCell: UICollectionViewCell {
     }
     
     static func nib() -> UINib {
-        UINib(nibName: "MyCollectionViewCell", bundle: nil)
+        UINib(nibName: identifier, bundle: nil)
     }
     
     func configureWith(dayNumber: String, dayTitle: String) {

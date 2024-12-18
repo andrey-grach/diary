@@ -48,8 +48,7 @@ final class TasksScreenViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        // TODO: Localizable
-        title = "Список дел"
+        title = "TasksScreen.Title".localized
         presenter.viewDidLoad()
         prepareTableView()
         prepareCollectionView()
@@ -170,12 +169,11 @@ final class TasksScreenViewController: UIViewController {
     }
     
     private func prepareTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(TaskTableViewCell.nib(), forCellReuseIdentifier: TaskTableViewCell.identifier)
     }
     
     private func prepareCollectionView() {
-        collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: "MyCollectionViewCell")
+        collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
     }
     
     // TODO: Loading indicator
@@ -298,7 +296,10 @@ extension TasksScreenViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: MyCollectionViewCell.identifier,
+            for: indexPath
+        )
         let dayTuple = days[indexPath.item]
         let date = dayTuple.0
         let day = dayTuple.1

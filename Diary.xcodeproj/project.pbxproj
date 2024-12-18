@@ -16,6 +16,8 @@
 		3E0E9AFF2D0F6898001720BF /* EventView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AFE2D0F6898001720BF /* EventView.xib */; };
 		3E1152DE2D11F385002E58ED /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1152DD2D11F385002E58ED /* DateHelper.swift */; };
 		3E1152E12D11FFFE002E58ED /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1152E02D11FFFE002E58ED /* String+Extensions.swift */; };
+		3E1152E32D12CEB0002E58ED /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 3E1152E22D12CEB0002E58ED /* Localizable.xcstrings */; };
+		3E1152E52D12D082002E58ED /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1152E42D12D082002E58ED /* Localized.swift */; };
 		3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E29C09F2D0DB0F100431156 /* CalendarManager.swift */; };
 		3E6951312D087CC800587837 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6951302D087CC800587837 /* AppDelegate.swift */; };
 		3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E6951392D087CCA00587837 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		3E0E9AFE2D0F6898001720BF /* EventView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventView.xib; sourceTree = "<group>"; };
 		3E1152DD2D11F385002E58ED /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		3E1152E02D11FFFE002E58ED /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		3E1152E22D12CEB0002E58ED /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		3E1152E42D12D082002E58ED /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		3E29C09F2D0DB0F100431156 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		3E69512D2D087CC800587837 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E6951302D087CC800587837 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				3E1152E02D11FFFE002E58ED /* String+Extensions.swift */,
+				3E1152E42D12D082002E58ED /* Localized.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 				3E69513B2D087CCA00587837 /* LaunchScreen.storyboard */,
 				3E6951392D087CCA00587837 /* Assets.xcassets */,
 				3EA365CD2D0CB632009192EE /* TasksList.json */,
+				3E1152E22D12CEB0002E58ED /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -439,6 +445,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 3E6951242D087CC800587837;
 			productRefGroup = 3E69512E2D087CC800587837 /* Products */;
@@ -459,6 +466,7 @@
 			files = (
 				3E0E9AFF2D0F6898001720BF /* EventView.xib in Resources */,
 				3E0E9AEF2D0F3A68001720BF /* TaskTableViewCell.xib in Resources */,
+				3E1152E32D12CEB0002E58ED /* Localizable.xcstrings in Resources */,
 				3E0E9AEA2D0DD031001720BF /* MyCollectionViewCell.xib in Resources */,
 				3EA365CE2D0CB632009192EE /* TasksList.json in Resources */,
 				3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */,
@@ -587,6 +595,7 @@
 				3EA365D42D0CB947009192EE /* TasksResponse.swift in Sources */,
 				3E0E9AFD2D0F6881001720BF /* EventView.swift in Sources */,
 				3E6951312D087CC800587837 /* AppDelegate.swift in Sources */,
+				3E1152E52D12D082002E58ED /* Localized.swift in Sources */,
 				3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */,
 				3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */,
 				3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */,
