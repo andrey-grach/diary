@@ -1,7 +1,7 @@
 import UIKit
-// TODO: Использовать Router на 2-м уровне для перехода на экран создания дела.
+
 protocol TasksScreenRouterProtocol {
-    
+    func routeToTaskDetails(_ task: TasksItem)
 }
 
 final class TasksScreenRouter {
@@ -9,5 +9,8 @@ final class TasksScreenRouter {
 }
 
 extension TasksScreenRouter: TasksScreenRouterProtocol {
-    
+    func routeToTaskDetails(_ task: TasksItem) {
+        let taskDetailController = TaskDetailScreenAssembly.assemble(taskData: task)
+        view?.navigationController?.pushViewController(taskDetailController, animated: true)
+    }
 }

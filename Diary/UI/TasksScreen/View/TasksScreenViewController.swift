@@ -58,6 +58,7 @@ final class TasksScreenViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         title = "TasksScreen.Title".localized
         presenter.viewDidLoad()
         prepareTableView()
@@ -118,7 +119,6 @@ final class TasksScreenViewController: UIViewController {
         presenter.eventBlockTapped(task: taskItem)
     }
     
-    // Метод для расчета размера ячейки
     private func calculateCollectionViewCellSize() {
         let width = collectionView.bounds.width
         let padding: CGFloat = Constants.numberOfIndentsInCollectionView * Constants.indentWidth // Отступы (с учетом межстрочного расстояния)
@@ -140,7 +140,6 @@ final class TasksScreenViewController: UIViewController {
         collectionView.register(MyCollectionViewCell.nib(), forCellWithReuseIdentifier: MyCollectionViewCell.identifier)
     }
     
-    // TODO: Loading indicator
     private func startLoading() {
         presentActivityIndicator()
     }

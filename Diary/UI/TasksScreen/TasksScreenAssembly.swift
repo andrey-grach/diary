@@ -16,7 +16,9 @@ final class TasksScreenAssembly: ScreenAssembly {
             tableAdapter: tableAdapter,
             collectionAdapter: collectionAdapter
         )
+        
         presenter.view = view
+        router.view = view
         tableAdapter.presenter = presenter
         collectionAdapter.presenter = presenter
         

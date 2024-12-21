@@ -30,8 +30,9 @@ extension TasksScreenPresenter: TasksScreenPresenterProtocol {
     func eventBlockTapped(task: TasksItem) {
         print("Задача нажата: \(task.name)")
         
-        //TODO: Переход на экран детальки задачи
+        // TODO: Переход на экран детальки задачи
 //        navigateToTaskDetail(taskItem: taskItem)
+        router.routeToTaskDetails(task)
     }
     
     func viewDidAppear() {
