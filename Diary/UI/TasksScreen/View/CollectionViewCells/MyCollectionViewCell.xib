@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MyCollectionViewCell" id="gTV-IL-0wX" customClass="MyCollectionViewCell" customModule="Diary" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWv-6Q-uLx">
+                        <rect key="frame" x="0.0" y="23" width="50" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b9v-gL-bCd">
+                        <rect key="frame" x="0.0" y="3" width="50" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="b9v-gL-bCd" secondAttribute="trailing" id="BUm-3t-RD0"/>
+                <constraint firstAttribute="trailing" secondItem="yWv-6Q-uLx" secondAttribute="trailing" id="EQ0-Yv-bT1"/>
+                <constraint firstItem="b9v-gL-bCd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="Gkd-cf-hAC"/>
+                <constraint firstItem="yWv-6Q-uLx" firstAttribute="top" secondItem="b9v-gL-bCd" secondAttribute="bottom" constant="2" id="GsM-GC-SjO"/>
+                <constraint firstItem="yWv-6Q-uLx" firstAttribute="top" secondItem="b9v-gL-bCd" secondAttribute="bottom" constant="2" id="WU7-Pc-dhh"/>
+                <constraint firstItem="yWv-6Q-uLx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eVU-xP-eif"/>
+                <constraint firstAttribute="bottom" secondItem="yWv-6Q-uLx" secondAttribute="bottom" constant="3" id="pdx-aY-vcH"/>
+                <constraint firstItem="b9v-gL-bCd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yYK-f5-VIj"/>
+            </constraints>
+            <connections>
+                <outlet property="dateLabel" destination="yWv-6Q-uLx" id="VSH-0S-LwP"/>
+                <outlet property="weekDayLabel" destination="b9v-gL-bCd" id="LZL-Ck-XWL"/>
+            </connections>
+            <point key="canvasLocation" x="96.18320610687023" y="20.422535211267608"/>
+        </collectionViewCell>
+    </objects>
+</document>
