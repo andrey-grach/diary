@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		15AF1E6921549D8893E73C05 /* Pods_Diary_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7941AF384DF8D648C151F595 /* Pods_Diary_DiaryUITests.framework */; };
+		3E02A1B12D1740430032BC96 /* TaskDetailScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B02D1740430032BC96 /* TaskDetailScreenModels.swift */; };
+		3E02A1B32D1740670032BC96 /* TaskDetailScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B22D1740670032BC96 /* TaskDetailScreenPresenter.swift */; };
+		3E02A1B72D17408C0032BC96 /* TaskDetailScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B62D17408C0032BC96 /* TaskDetailScreenAssembly.swift */; };
+		3E02A1B92D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B82D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift */; };
+		3E02A1BF2D17414C0032BC96 /* TaskDetailScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E02A1BE2D17414C0032BC96 /* TaskDetailScreenViewController.xib */; };
+		3E02A1C02D17414C0032BC96 /* TaskDetailScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1BD2D17414C0032BC96 /* TaskDetailScreenViewController.swift */; };
+		3E02A1C42D1758C90032BC96 /* TaskDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E02A1C32D1758C90032BC96 /* TaskDetailTableViewCell.xib */; };
+		3E02A1C52D1758C90032BC96 /* TaskDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1C22D1758C90032BC96 /* TaskDetailTableViewCell.swift */; };
 		3E0E9AEA2D0DD031001720BF /* MyCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AE92D0DD031001720BF /* MyCollectionViewCell.xib */; };
 		3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E9AE82D0DD031001720BF /* MyCollectionViewCell.swift */; };
 		3E0E9AEF2D0F3A68001720BF /* TaskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E0E9AEE2D0F3A68001720BF /* TaskTableViewCell.xib */; };
@@ -65,6 +73,14 @@
 /* Begin PBXFileReference section */
 		172DBF2734A2D554BE89284C /* Pods_DiaryTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DiaryTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7FDFF3CFD2BCB62BB8209B /* Pods-DiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
+		3E02A1B02D1740430032BC96 /* TaskDetailScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenModels.swift; sourceTree = "<group>"; };
+		3E02A1B22D1740670032BC96 /* TaskDetailScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenPresenter.swift; sourceTree = "<group>"; };
+		3E02A1B62D17408C0032BC96 /* TaskDetailScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenAssembly.swift; sourceTree = "<group>"; };
+		3E02A1B82D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenTableAdapter.swift; sourceTree = "<group>"; };
+		3E02A1BD2D17414C0032BC96 /* TaskDetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenViewController.swift; sourceTree = "<group>"; };
+		3E02A1BE2D17414C0032BC96 /* TaskDetailScreenViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDetailScreenViewController.xib; sourceTree = "<group>"; };
+		3E02A1C22D1758C90032BC96 /* TaskDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailTableViewCell.swift; sourceTree = "<group>"; };
+		3E02A1C32D1758C90032BC96 /* TaskDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskDetailTableViewCell.xib; sourceTree = "<group>"; };
 		3E0E9AE82D0DD031001720BF /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E0E9AE92D0DD031001720BF /* MyCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCollectionViewCell.xib; sourceTree = "<group>"; };
 		3E0E9AED2D0F3A68001720BF /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +166,37 @@
 				8F6BC931E63A3B63E5780E1D /* Pods-DiaryTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		3E02A1AF2D1740270032BC96 /* TaskDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3E02A1BC2D1741190032BC96 /* View */,
+				3E02A1B02D1740430032BC96 /* TaskDetailScreenModels.swift */,
+				3E02A1B22D1740670032BC96 /* TaskDetailScreenPresenter.swift */,
+				3E02A1B62D17408C0032BC96 /* TaskDetailScreenAssembly.swift */,
+				3E02A1B82D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift */,
+			);
+			path = TaskDetailScreen;
+			sourceTree = "<group>";
+		};
+		3E02A1BC2D1741190032BC96 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3E02A1C12D1758780032BC96 /* TableViewCell */,
+				3E02A1BD2D17414C0032BC96 /* TaskDetailScreenViewController.swift */,
+				3E02A1BE2D17414C0032BC96 /* TaskDetailScreenViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3E02A1C12D1758780032BC96 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3E02A1C22D1758C90032BC96 /* TaskDetailTableViewCell.swift */,
+				3E02A1C32D1758C90032BC96 /* TaskDetailTableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		3E0E9AEC2D0E1980001720BF /* TableViewCells */ = {
@@ -293,6 +340,7 @@
 		3EA365D02D0CB8CF009192EE /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3E02A1AF2D1740270032BC96 /* TaskDetailScreen */,
 				3EBC87E62D0B7CAD00BF70BF /* TasksScreen */,
 			);
 			path = UI;
@@ -490,7 +538,9 @@
 				3E1152E32D12CEB0002E58ED /* Localizable.xcstrings in Resources */,
 				3E0E9AEA2D0DD031001720BF /* MyCollectionViewCell.xib in Resources */,
 				3EA365CE2D0CB632009192EE /* TasksList.json in Resources */,
+				3E02A1BF2D17414C0032BC96 /* TaskDetailScreenViewController.xib in Resources */,
 				3E69513A2D087CCA00587837 /* Assets.xcassets in Resources */,
+				3E02A1C42D1758C90032BC96 /* TaskDetailTableViewCell.xib in Resources */,
 				3EBC87EA2D0B7D5100BF70BF /* TasksScreenViewController.xib in Resources */,
 				3E69513D2D087CCA00587837 /* Base in Resources */,
 			);
@@ -605,11 +655,15 @@
 			files = (
 				3E0E9AF02D0F3A68001720BF /* TaskTableViewCell.swift in Sources */,
 				3EBC87E82D0B7CC200BF70BF /* TasksScreenViewController.swift in Sources */,
+				3E02A1C02D17414C0032BC96 /* TaskDetailScreenViewController.swift in Sources */,
 				3EA365D62D0CBAA3009192EE /* TasksItem.swift in Sources */,
 				3EA365D92D0CBC98009192EE /* LossyCodableList.swift in Sources */,
 				3E1152E12D11FFFE002E58ED /* String+Extensions.swift in Sources */,
+				3E02A1B32D1740670032BC96 /* TaskDetailScreenPresenter.swift in Sources */,
 				3EA280952D0C4030003A2433 /* TasksScreenRouter.swift in Sources */,
 				3EA280972D0C404D003A2433 /* TasksScreenAssembly.swift in Sources */,
+				3E02A1B92D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift in Sources */,
+				3E02A1B72D17408C0032BC96 /* TaskDetailScreenAssembly.swift in Sources */,
 				3EA280912D0C3FFF003A2433 /* TasksScreenModels.swift in Sources */,
 				3EA280992D0C405C003A2433 /* TasksScreenTableAdapter.swift in Sources */,
 				3E1152DE2D11F385002E58ED /* DateHelper.swift in Sources */,
@@ -620,9 +674,11 @@
 				3E1152EE2D1353CF002E58ED /* UIVIewController+Extension.swift in Sources */,
 				3E1152E72D1301AA002E58ED /* TasksScreenCollectionAdapter.swift in Sources */,
 				3E1152E52D12D082002E58ED /* Localized.swift in Sources */,
+				3E02A1B12D1740430032BC96 /* TaskDetailScreenModels.swift in Sources */,
 				3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */,
 				3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */,
 				3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */,
+				3E02A1C52D1758C90032BC96 /* TaskDetailTableViewCell.swift in Sources */,
 				3EA2809C2D0C40EE003A2433 /* DiaryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
