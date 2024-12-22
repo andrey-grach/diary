@@ -5,7 +5,7 @@ final class TaskDetailScreenViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     private let presenter: TaskDetailScreenPresenterProtocol
     private let tableAdapter: TaskDetailScreenTableAdapter
-    private var currentTask: TasksItem? = nil
+    private var currentTask: TaskDetailTableViewCellData?
     
     init(presenter: TaskDetailScreenPresenterProtocol, tableAdapter: TaskDetailScreenTableAdapter) {
         self.presenter = presenter
@@ -27,6 +27,8 @@ final class TaskDetailScreenViewController: UIViewController {
     
     private func prepareTableView() {
         tableView.register(TaskDetailTableViewCell.nib(), forCellReuseIdentifier: TaskDetailTableViewCell.identifier)
+        self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 50
     }
 }
 
@@ -43,11 +45,13 @@ extension TaskDetailScreenViewController: UITableViewDataSource {
             guard let currentTask else { return UITableViewCell() }
             reusableCell.configureCellWith(
                 data: .init(
-                    title: currentTask.name,
-                    date: currentTask.dateStart,
+                    title: currentTask.title,
+                    date: currentTask.date,
                     description: currentTask.description
                 )
             )
+            reusableCell.contentView.setNeedsLayout()
+            reusableCell.contentView.layoutIfNeeded()
         }
         return cell
     }

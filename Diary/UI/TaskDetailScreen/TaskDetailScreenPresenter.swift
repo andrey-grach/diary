@@ -25,11 +25,25 @@ final class TaskDetailScreenPresenter {
         self.router = router
         self.taskData = taskData
     }
+    
+    private func prepareCellData(with taskData: TasksItem) -> TaskDetailTableViewCellData? {
+        guard let dateStart = DateHelper.getDate(fromTimestamp: taskData.dateStart),
+              let dateFinish = DateHelper.getDate(fromTimestamp: taskData.dateFinish) else { return nil }
+        let timeStartString = DateHelper.getString(fromDate: dateStart, format: .hhmmColon)
+        let timeFinishString = DateHelper.getString(fromDate: dateFinish, format: .hhmmColon)
+        
+        return .init(
+            title: taskData.name,
+            date: "\(timeStartString) - \(timeFinishString)",
+            description: taskData.description
+        )
+    }
 }
 
 extension TaskDetailScreenPresenter: TaskDetailScreenPresenterProtocol {
     func viewDidLoad() {
-        state = .success(taskData)
+        guard let preparedCellData = prepareCellData(with: taskData) else { return } 
+        state = .success(preparedCellData)
     }
 }
 

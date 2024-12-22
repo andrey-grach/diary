@@ -24,14 +24,23 @@ final class TasksScreenPresenter {
         self.router = router
         self.service = service
     }
+    
+    private func getFormattedDateFor(date: Date, format: DateTimeFormat) -> String {
+         DateHelper.getString(fromDate: date, format: format).capitalized
+    }
+    
+    private func prepareDataForEventView(with data: TasksItem) -> EventViewData? {
+        guard let dateStart = DateHelper.getDate(fromTimestamp: data.dateStart),
+              let dateFinish = DateHelper.getDate(fromTimestamp: data.dateFinish) else { return nil }
+        let timeStartString = DateHelper.getString(fromDate: dateStart, format: .hhmmColon)
+        let timeFinishString = DateHelper.getString(fromDate: dateFinish, format: .hhmmColon)
+        
+        return .init(title: data.name, date: "\(timeStartString) - \(timeFinishString)")
+    }
 }
 
 extension TasksScreenPresenter: TasksScreenPresenterProtocol {
     func eventBlockTapped(task: TasksItem) {
-        print("Задача нажата: \(task.name)")
-        
-        // TODO: Переход на экран детальки задачи
-//        navigateToTaskDetail(taskItem: taskItem)
         router.routeToTaskDetails(task)
     }
     
@@ -76,14 +85,11 @@ extension TasksScreenPresenter: TasksScreenPresenterProtocol {
         )
         selectCurrentDay()
     }
-    
-    private func getFormattedDateFor(date: Date, format: DateTimeFormat) -> String {
-         DateHelper.getString(fromDate: date, format: format).capitalized
-    }
 }
 
 extension TasksScreenPresenter: TasksScreenTableAdapterOutput {
     func addEventView(taskItem: TasksItem?) {
+        
         view?.addEvent(taskItem: taskItem)
     }
     

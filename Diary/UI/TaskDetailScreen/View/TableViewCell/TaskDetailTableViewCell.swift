@@ -7,8 +7,8 @@ struct TaskDetailTableViewCellData {
 }
 
 final class TaskDetailTableViewCell: UITableViewCell {
-    @IBOutlet weak var taskLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
     static let identifier = "TaskDetailTableViewCell"
@@ -23,8 +23,8 @@ final class TaskDetailTableViewCell: UITableViewCell {
     }
     
     func configureCellWith(data: TaskDetailTableViewCellData) {
-        taskLabel.text = data.title
-        dateLabel.text = data.date
+        timeLabel.text = data.date
+        titleLabel.text = data.title
         descriptionLabel.text = data.description
     }
 }

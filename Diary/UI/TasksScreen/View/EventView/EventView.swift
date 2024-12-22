@@ -1,5 +1,10 @@
 import UIKit
 
+struct EventViewData {
+    let title: String
+    let date: String
+}
+
 final class EventView: UIView {
     static let indentifier: String = "EventView"
     
@@ -18,13 +23,9 @@ final class EventView: UIView {
         setupConstraints()
     }
     
-    func configure(timeStart: String, timeFinish: String, title: String) {
-        guard let dateStart = DateHelper.getDate(fromTimestamp: timeStart),
-              let dateFinish = DateHelper.getDate(fromTimestamp: timeFinish) else { return }
-        let timeStartString = DateHelper.getString(fromDate: dateStart, format: .hhmmColon)
-        let timeFinishString = DateHelper.getString(fromDate: dateFinish, format: .hhmmColon)
-        timeLabel.text = "\(timeStartString) - \(timeFinishString)"
-        titleLabel.text = title
+    func configure(with data: EventViewData) {
+        timeLabel.text = data.date
+        titleLabel.text = data.title
     }
     
     private func setupConstraints() {

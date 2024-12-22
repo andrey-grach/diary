@@ -104,13 +104,22 @@ final class TasksScreenViewController: UIViewController {
     }
 
     private func configureEventView(_ eventView: EventView, with taskItem: TasksItem) {
-        eventView.configure(timeStart: taskItem.dateStart, timeFinish: taskItem.dateFinish, title: taskItem.name)
+        guard let prepareEventViewData = prepareDateForEventView(using: taskItem) else { return }
+        eventView.configure(with: prepareEventViewData)
         eventView.translatesAutoresizingMaskIntoConstraints = false
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(eventTapped(_:)))
         eventView.addGestureRecognizer(tapGesture)
 
         objc_setAssociatedObject(eventView, &associatedKey, taskItem, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+    }
+    
+    private func prepareDateForEventView(using taskItem: TasksItem) -> EventViewData? {
+        guard let dateStart = DateHelper.getDate(fromTimestamp: taskItem.dateStart),
+              let dateFinish = DateHelper.getDate(fromTimestamp: taskItem.dateFinish) else { return nil }
+        let timeStartString = DateHelper.getString(fromDate: dateStart, format: .hhmmColon)
+        let timeFinishString = DateHelper.getString(fromDate: dateFinish, format: .hhmmColon)
+        
+        return .init(title: taskItem.name, date: "\(timeStartString) - \(timeFinishString)")
     }
     
     @objc private func eventTapped(_ sender: UITapGestureRecognizer) {
