@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -12,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TasksScreenViewController" customModule="Diary" customModuleProvider="target">
             <connections>
+                <outlet property="addTaskButton" destination="4mR-W3-9NR" id="kNt-wS-j3S"/>
                 <outlet property="collectionView" destination="o0c-p6-D1k" id="5Z8-5s-rAP"/>
                 <outlet property="dateLabel" destination="1if-jd-gZs" id="BsP-cD-6TT"/>
                 <outlet property="tableView" destination="EBR-Xm-efd" id="lsc-Yp-QtM"/>
@@ -46,17 +48,33 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mR-W3-9NR">
+                    <rect key="frame" x="291" y="725" width="86" height="77"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="77" id="Ogu-n9-UUq"/>
+                        <constraint firstAttribute="width" constant="86" id="SmX-oY-p8I"/>
+                    </constraints>
+                    <buttonConfiguration key="configuration" style="tinted">
+                        <imageReference key="image" image="note.text.badge.plus" catalog="system" symbolScale="large" renderingMode="original"/>
+                        <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="buttonTapped:" destination="-1" eventType="touchUpInside" id="7Sy-qn-Wh8"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="o0c-p6-D1k" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2pI-4p-ee8"/>
                 <constraint firstItem="1if-jd-gZs" firstAttribute="top" secondItem="o0c-p6-D1k" secondAttribute="bottom" id="7KR-Qk-PkQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4mR-W3-9NR" secondAttribute="bottom" constant="16" id="Caf-JD-olo"/>
                 <constraint firstItem="EBR-Xm-efd" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Ncx-Ms-do2"/>
                 <constraint firstItem="o0c-p6-D1k" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="SD8-di-2aJ"/>
                 <constraint firstItem="EBR-Xm-efd" firstAttribute="top" secondItem="o0c-p6-D1k" secondAttribute="bottom" constant="30.333333333333314" id="TNy-nS-bG3"/>
                 <constraint firstItem="EBR-Xm-efd" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="ThJ-Q7-hBz"/>
                 <constraint firstItem="EBR-Xm-efd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="bEM-Wa-lsI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4mR-W3-9NR" secondAttribute="trailing" constant="16" id="khv-TN-CtS"/>
                 <constraint firstItem="EBR-Xm-efd" firstAttribute="top" secondItem="1if-jd-gZs" secondAttribute="bottom" constant="0.33333333333331439" id="mlx-pK-jrP"/>
                 <constraint firstItem="1if-jd-gZs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qyL-qT-ySm"/>
                 <constraint firstItem="o0c-p6-D1k" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="smL-5a-xPo"/>
@@ -66,11 +84,15 @@
         </view>
     </objects>
     <resources>
+        <image name="note.text.badge.plus" catalog="system" width="128" height="109"/>
         <namedColor name="grayPrimary">
             <color red="0.94509803921568625" green="0.93725490196078431" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

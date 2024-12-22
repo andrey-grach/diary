@@ -13,6 +13,7 @@ protocol TasksScreenPresenterProtocol {
     func viewDidLoad()
     func viewDidAppear()
     func eventBlockTapped(task: TasksItem)
+    func addTaskButtonTapped()
 }
 
 final class TasksScreenViewController: UIViewController {
@@ -30,6 +31,8 @@ final class TasksScreenViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var addTaskButton: UIButton!
+    
     private var associatedKey: UInt8 = 0
     private let presenter: TasksScreenPresenterProtocol
     private let tableAdapter: TasksScreenTableAdapter
@@ -159,6 +162,10 @@ final class TasksScreenViewController: UIViewController {
     
     // TODO: Error alert
     private func showErrorAlert() {
+    }
+    
+    @IBAction private func buttonTapped(_ sender: UIButton) {
+        presenter.addTaskButtonTapped()
     }
 }
 

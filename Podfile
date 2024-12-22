@@ -9,6 +9,7 @@ target 'Diary' do
 
   # Pods for Diary
   pod 'SwiftLint'
+  pod 'SnapKit', '~> 5.7.0'
   
   target 'DiaryTests' do
     inherit! :search_paths

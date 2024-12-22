@@ -13,15 +13,18 @@ final class TasksScreenPresenter {
     // MARK: - Private Properties
     
     private let router: TasksScreenRouterProtocol
-    private let service: DiaryServiceProtocol    
+    private let service: DiaryServiceProtocol
+    private var selectedDate: Date = Date()
+    private var calendarManager = CalendarManager.shared
+    private var selectedCollectionViewCell: IndexPath?
+    
     private(set) var state: TasksScreenModels.State = .default {
         didSet {
             view?.handleState(state)
         }
     }
-    private var selectedDate: Date = Date()
-    private var calendarManager = CalendarManager.shared
-    private var selectedCollectionViewCell: IndexPath?
+    
+    // MARK: - Lifecycle
     
     init(router: TasksScreenRouterProtocol, service: DiaryServiceProtocol) {
         self.router = router
@@ -40,6 +43,19 @@ final class TasksScreenPresenter {
         
         return .init(title: data.name, date: "\(timeStartString) - \(timeFinishString)")
     }
+    
+    private func selectCurrentDay() {
+        let calendar = Calendar.current
+        let today = Date()
+        
+        view?.dateLabel.text = getFormattedDateFor(date: today, format: .EEEEColondMMMMyyyy)
+        
+        if let index = calendarManager.getDaysInCurrentMonth().firstIndex(where: { calendar.isDate($0.0, inSameDayAs: today) }) {
+            selectedCollectionViewCell = IndexPath(item: index, section: 0)
+            view?.collectionView.reloadData()
+            view?.collectionView.layoutIfNeeded()
+        }
+    }
 }
 
 extension TasksScreenPresenter: TasksScreenPresenterProtocol {
@@ -54,19 +70,6 @@ extension TasksScreenPresenter: TasksScreenPresenterProtocol {
             at: .centeredHorizontally,
             animated: true
         )
-    }
-    
-    func selectCurrentDay() {
-        let calendar = Calendar.current
-        let today = Date()
-        
-        view?.dateLabel.text = getFormattedDateFor(date: today, format: .EEEEColondMMMMyyyy)
-        
-        if let index = calendarManager.getDaysInCurrentMonth().firstIndex(where: { calendar.isDate($0.0, inSameDayAs: today) }) {
-            selectedCollectionViewCell = IndexPath(item: index, section: 0)
-            view?.collectionView.reloadData()
-            view?.collectionView.layoutIfNeeded()
-        }
     }
     
     func viewDidLoad() {
@@ -87,6 +90,10 @@ extension TasksScreenPresenter: TasksScreenPresenterProtocol {
             }
         )
         selectCurrentDay()
+    }
+    
+    func addTaskButtonTapped() {
+        router.routeToAddTask()
     }
 }
 
