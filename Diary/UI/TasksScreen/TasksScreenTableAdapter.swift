@@ -7,11 +7,10 @@ protocol TasksScreenTableAdapterOutput: AnyObject {
 }
 
 final class TasksScreenTableAdapter: NSObject {
-    weak var presenter: TasksScreenTableAdapterOutput?
-
     struct Constants {
         static let hoursInDay = 24
     }
+    weak var presenter: TasksScreenTableAdapterOutput?
     var tasks: [TasksItem] = []
 }
 

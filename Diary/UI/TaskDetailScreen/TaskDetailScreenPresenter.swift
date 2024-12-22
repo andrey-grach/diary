@@ -1,30 +1,39 @@
 import Foundation
 
+// MARK: - TaskDetailScreenViewInput
+
 protocol TaskDetailScreenViewInput: AnyObject {
     func handleState(_ state: TaskDetailScreenModels.State)
 }
 
+// MARK: - TaskDetailScreenPresenterProtocol
+
 protocol TaskDetailScreenPresenterProtocol {
     func viewDidLoad()
 }
+
+// MARK: - TaskDetailScreenPresenter
 
 final class TaskDetailScreenPresenter {
     
     // MARK: - Properties
     
     weak var view: TaskDetailScreenViewInput?
-    private let router: TaskDetailScreenRouter
     private(set) var taskData: TasksItem
+    
     private(set) var state: TaskDetailScreenModels.State = .default {
         didSet {
             view?.handleState(state)
         }
     }
     
-    init(router: TaskDetailScreenRouter, taskData: TasksItem) {
-        self.router = router
+    // MARK: - Lifecycle
+    
+    init(taskData: TasksItem) {
         self.taskData = taskData
     }
+    
+    // MARK: - Private Methods
     
     private func prepareCellData(with taskData: TasksItem) -> TaskDetailTableViewCellData? {
         guard let dateStart = DateHelper.getDate(fromTimestamp: taskData.dateStart),
@@ -40,13 +49,11 @@ final class TaskDetailScreenPresenter {
     }
 }
 
+// MARK: - TaskDetailScreenPresenterProtocol
+
 extension TaskDetailScreenPresenter: TaskDetailScreenPresenterProtocol {
     func viewDidLoad() {
-        guard let preparedCellData = prepareCellData(with: taskData) else { return } 
+        guard let preparedCellData = prepareCellData(with: taskData) else { return }
         state = .success(preparedCellData)
     }
-}
-
-extension TaskDetailScreenPresenter: TaskDetailScreenTableAdapterOutput {
-    
 }

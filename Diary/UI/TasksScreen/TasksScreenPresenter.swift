@@ -5,10 +5,13 @@ final class TasksScreenPresenter {
     struct Constants {
         static let hoursInDay = 24
     }
+    
     // MARK: - Properties
+    
     weak var view: TasksScreenViewInput?
     
     // MARK: - Private Properties
+    
     private let router: TasksScreenRouterProtocol
     private let service: DiaryServiceProtocol    
     private(set) var state: TasksScreenModels.State = .default {

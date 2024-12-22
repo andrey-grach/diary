@@ -10,7 +10,6 @@
 		15AF1E6921549D8893E73C05 /* Pods_Diary_DiaryUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7941AF384DF8D648C151F595 /* Pods_Diary_DiaryUITests.framework */; };
 		3E02A1B12D1740430032BC96 /* TaskDetailScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B02D1740430032BC96 /* TaskDetailScreenModels.swift */; };
 		3E02A1B32D1740670032BC96 /* TaskDetailScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B22D1740670032BC96 /* TaskDetailScreenPresenter.swift */; };
-		3E02A1B52D17407A0032BC96 /* TaskDetailScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B42D17407A0032BC96 /* TaskDetailScreenRouter.swift */; };
 		3E02A1B72D17408C0032BC96 /* TaskDetailScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B62D17408C0032BC96 /* TaskDetailScreenAssembly.swift */; };
 		3E02A1B92D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E02A1B82D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift */; };
 		3E02A1BF2D17414C0032BC96 /* TaskDetailScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E02A1BE2D17414C0032BC96 /* TaskDetailScreenViewController.xib */; };
@@ -76,7 +75,6 @@
 		2C7FDFF3CFD2BCB62BB8209B /* Pods-DiaryTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiaryTests.debug.xcconfig"; path = "Target Support Files/Pods-DiaryTests/Pods-DiaryTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E02A1B02D1740430032BC96 /* TaskDetailScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenModels.swift; sourceTree = "<group>"; };
 		3E02A1B22D1740670032BC96 /* TaskDetailScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenPresenter.swift; sourceTree = "<group>"; };
-		3E02A1B42D17407A0032BC96 /* TaskDetailScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenRouter.swift; sourceTree = "<group>"; };
 		3E02A1B62D17408C0032BC96 /* TaskDetailScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenAssembly.swift; sourceTree = "<group>"; };
 		3E02A1B82D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenTableAdapter.swift; sourceTree = "<group>"; };
 		3E02A1BD2D17414C0032BC96 /* TaskDetailScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailScreenViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				3E02A1BC2D1741190032BC96 /* View */,
 				3E02A1B02D1740430032BC96 /* TaskDetailScreenModels.swift */,
 				3E02A1B22D1740670032BC96 /* TaskDetailScreenPresenter.swift */,
-				3E02A1B42D17407A0032BC96 /* TaskDetailScreenRouter.swift */,
 				3E02A1B62D17408C0032BC96 /* TaskDetailScreenAssembly.swift */,
 				3E02A1B82D17409B0032BC96 /* TaskDetailScreenTableAdapter.swift */,
 			);
@@ -682,7 +679,6 @@
 				3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */,
 				3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */,
 				3E02A1C52D1758C90032BC96 /* TaskDetailTableViewCell.swift in Sources */,
-				3E02A1B52D17407A0032BC96 /* TaskDetailScreenRouter.swift in Sources */,
 				3EA2809C2D0C40EE003A2433 /* DiaryService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
