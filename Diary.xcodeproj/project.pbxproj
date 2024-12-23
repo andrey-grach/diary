@@ -43,6 +43,11 @@
 		3E7D30442D18A3D2009A9758 /* AddTaskScreenAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D30432D18A3D2009A9758 /* AddTaskScreenAssembly.swift */; };
 		3E7D30462D18A3F9009A9758 /* AddTaskScreenTableAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D30452D18A3F9009A9758 /* AddTaskScreenTableAdapter.swift */; };
 		3E7D30482D18A416009A9758 /* AddTaskScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D30472D18A416009A9758 /* AddTaskScreenViewController.swift */; };
+		3E7D304B2D198657009A9758 /* TitleDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D304A2D198657009A9758 /* TitleDescriptionTableViewCell.swift */; };
+		3E7D304D2D1989AC009A9758 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D304C2D1989AC009A9758 /* UIView+Extension.swift */; };
+		3E7D304F2D19D116009A9758 /* TextInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D304E2D19D116009A9758 /* TextInputTableViewCell.swift */; };
+		3E7D30522D19D6BD009A9758 /* TextInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D30512D19D6BD009A9758 /* TextInputField.swift */; };
+		3E7D30552D19F523009A9758 /* AddTaskRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7D30542D19F523009A9758 /* AddTaskRequestModel.swift */; };
 		3EA280912D0C3FFF003A2433 /* TasksScreenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280902D0C3FFF003A2433 /* TasksScreenModels.swift */; };
 		3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280922D0C401F003A2433 /* TasksScreenPresenter.swift */; };
 		3EA280952D0C4030003A2433 /* TasksScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA280942D0C4030003A2433 /* TasksScreenRouter.swift */; };
@@ -118,6 +123,11 @@
 		3E7D30432D18A3D2009A9758 /* AddTaskScreenAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskScreenAssembly.swift; sourceTree = "<group>"; };
 		3E7D30452D18A3F9009A9758 /* AddTaskScreenTableAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskScreenTableAdapter.swift; sourceTree = "<group>"; };
 		3E7D30472D18A416009A9758 /* AddTaskScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskScreenViewController.swift; sourceTree = "<group>"; };
+		3E7D304A2D198657009A9758 /* TitleDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		3E7D304C2D1989AC009A9758 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		3E7D304E2D19D116009A9758 /* TextInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputTableViewCell.swift; sourceTree = "<group>"; };
+		3E7D30512D19D6BD009A9758 /* TextInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputField.swift; sourceTree = "<group>"; };
+		3E7D30542D19F523009A9758 /* AddTaskRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskRequestModel.swift; sourceTree = "<group>"; };
 		3EA280902D0C3FFF003A2433 /* TasksScreenModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenModels.swift; sourceTree = "<group>"; };
 		3EA280922D0C401F003A2433 /* TasksScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenPresenter.swift; sourceTree = "<group>"; };
 		3EA280942D0C4030003A2433 /* TasksScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenRouter.swift; sourceTree = "<group>"; };
@@ -235,6 +245,7 @@
 				3E1152E02D11FFFE002E58ED /* String+Extensions.swift */,
 				3E1152E42D12D082002E58ED /* Localized.swift */,
 				3E1152ED2D1353CF002E58ED /* UIVIewController+Extension.swift */,
+				3E7D304C2D1989AC009A9758 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +333,8 @@
 		3E7D303C2D18A366009A9758 /* AddTaskScreen */ = {
 			isa = PBXGroup;
 			children = (
+				3E7D30502D19D6AB009A9758 /* Views */,
+				3E7D30492D197F03009A9758 /* Cells */,
 				3E7D303D2D18A39F009A9758 /* AddTaskScreenModels.swift */,
 				3E7D303F2D18A3AC009A9758 /* AddTaskScreenPresenter.swift */,
 				3E7D30412D18A3B9009A9758 /* AddTaskScreenRouter.swift */,
@@ -330,6 +343,31 @@
 				3E7D30472D18A416009A9758 /* AddTaskScreenViewController.swift */,
 			);
 			path = AddTaskScreen;
+			sourceTree = "<group>";
+		};
+		3E7D30492D197F03009A9758 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				3E7D304A2D198657009A9758 /* TitleDescriptionTableViewCell.swift */,
+				3E7D304E2D19D116009A9758 /* TextInputTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		3E7D30502D19D6AB009A9758 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E7D30512D19D6BD009A9758 /* TextInputField.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3E7D30532D19F509009A9758 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				3E7D30542D19F523009A9758 /* AddTaskRequestModel.swift */,
+			);
+			path = Requests;
 			sourceTree = "<group>";
 		};
 		3EA2809A2D0C40C4003A2433 /* Services */ = {
@@ -357,6 +395,7 @@
 		3EA365CF2D0CB86A009192EE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3E7D30532D19F509009A9758 /* Requests */,
 				3EA365D12D0CB901009192EE /* Responses */,
 			);
 			path = Models;
@@ -715,13 +754,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7D30552D19F523009A9758 /* AddTaskRequestModel.swift in Sources */,
 				3E0E9AF02D0F3A68001720BF /* TaskTableViewCell.swift in Sources */,
+				3E7D304B2D198657009A9758 /* TitleDescriptionTableViewCell.swift in Sources */,
 				3EBC87E82D0B7CC200BF70BF /* TasksScreenViewController.swift in Sources */,
 				3E7D30482D18A416009A9758 /* AddTaskScreenViewController.swift in Sources */,
 				3E02A1C02D17414C0032BC96 /* TaskDetailScreenViewController.swift in Sources */,
 				3EA365D62D0CBAA3009192EE /* TasksItem.swift in Sources */,
 				3E7D30402D18A3AC009A9758 /* AddTaskScreenPresenter.swift in Sources */,
+				3E7D304F2D19D116009A9758 /* TextInputTableViewCell.swift in Sources */,
 				3E7D30422D18A3B9009A9758 /* AddTaskScreenRouter.swift in Sources */,
+				3E7D304D2D1989AC009A9758 /* UIView+Extension.swift in Sources */,
 				3EA365D92D0CBC98009192EE /* LossyCodableList.swift in Sources */,
 				3E1152E12D11FFFE002E58ED /* String+Extensions.swift in Sources */,
 				3E02A1B32D1740670032BC96 /* TaskDetailScreenPresenter.swift in Sources */,
@@ -744,6 +787,7 @@
 				3E29C0A02D0DB0F100431156 /* CalendarManager.swift in Sources */,
 				3EA280932D0C401F003A2433 /* TasksScreenPresenter.swift in Sources */,
 				3E7D303E2D18A39F009A9758 /* AddTaskScreenModels.swift in Sources */,
+				3E7D30522D19D6BD009A9758 /* TextInputField.swift in Sources */,
 				3E0E9AEB2D0DD031001720BF /* MyCollectionViewCell.swift in Sources */,
 				3E02A1C52D1758C90032BC96 /* TaskDetailTableViewCell.swift in Sources */,
 				3EA2809C2D0C40EE003A2433 /* DiaryService.swift in Sources */,

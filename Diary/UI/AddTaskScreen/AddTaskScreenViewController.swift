@@ -8,16 +8,18 @@ protocol AddTaskScreenViewInput: AnyObject {
 
 protocol AddTaskScreenPresenterProtocol {
     func viewDidLoad()
+    func valueChanged(inputType: InputType, value: String)
+    func tappedActionButton()
 }
 
 final class AddTaskScreenViewController: UIViewController {
     
-    // MARK: - Properties
+    // MARK: - Private properties
     
     private let tableView = UITableView(frame: .zero, style: .grouped)
     private let presenter: AddTaskScreenPresenterProtocol
     private let tableAdapter: AddTaskScreenTableAdapter
-    
+    private var inputFields = [UIView]()
     // MARK: - Lifecycle
     
     init(
@@ -48,7 +50,17 @@ final class AddTaskScreenViewController: UIViewController {
     }
     
     private func prepareTableView() {
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        tableView.register(
+            TitleDescriptionTableViewCell.self,
+            forCellReuseIdentifier: TitleDescriptionTableViewCell.identifier
+        )
+        
+        tableView.register(
+            TextInputTableViewCell.self,
+            forCellReuseIdentifier: TextInputTableViewCell.identifier
+        )
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.dataSource = self
@@ -82,12 +94,64 @@ extension AddTaskScreenViewController: UITableViewDelegate {
 
 extension AddTaskScreenViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TextInputTableViewCell.identifier, for: indexPath)
+        switch indexPath.row {
+        case 0:
+            if let reusableCell = cell as? TextInputTableViewCell {
+                reusableCell.configureCell(inputType: .title)
+                reusableCell.delegate = self
+                if inputFields.indices.contains(indexPath.row) {
+                    inputFields[indexPath.row] = reusableCell.textInputField
+                } else {
+                    inputFields.append(reusableCell.textInputField)
+                }
+                reusableCell.textInputField.becomeFirstResponder()
+            }
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TextInputTableViewCell.identifier, for: indexPath)
+            if let reusableCell = cell as? TextInputTableViewCell {
+                reusableCell.configureCell(inputType: .description)
+                reusableCell.delegate = self
+                if inputFields.indices.contains(indexPath.row) {
+                    inputFields[indexPath.row] = reusableCell.textInputField
+                } else {
+                    inputFields.append(reusableCell.textInputField)
+                }
+            }
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+}
+
+
+// MARK: - TextInputTableViewCellDelegate
+
+extension AddTaskScreenViewController: TextInputTableViewCellDelegate {
+    func textFieldDidChange(in cell: TextInputTableViewCell) {
+        presenter.valueChanged(
+            inputType: cell.inputType,
+            value: cell.text
+//            inputType: cell.inputType,
+//            validationStatus: cell.validationStatus ?? .notValidated,
+//            value: cell.text
+        )
+    }
+    
+    func textFieldDidReturn(in cell: TextInputTableViewCell) {
+        if cell.textInputField == inputFields.last {
+            tableView.endEditing(true)
+            presenter.tappedActionButton()
+        } else {
+            if let index = inputFields.firstIndex(of: cell.textInputField) {
+                inputFields[index+1].becomeFirstResponder()
+            }
+        }
     }
 }

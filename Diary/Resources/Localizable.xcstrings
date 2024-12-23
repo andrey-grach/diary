@@ -68,6 +68,40 @@
           }
         }
       }
+    },
+    "TextInputTableViewCell.InputType.Description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type task description"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите описание дела"
+          }
+        }
+      }
+    },
+    "TextInputTableViewCell.InputType.Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type task name"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите название дела"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

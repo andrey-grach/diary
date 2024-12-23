@@ -2,6 +2,7 @@ import Foundation
 
 protocol DiaryServiceProtocol {
     func getTasks(completion: @escaping (Result<TasksResponse, Error>) -> Void)
+    func addTask(_ model: AddTaskRequestModel.Data, completion: @escaping (Result<TasksResponse, Error>) -> Void)
 }
 
 final class DiaryService {
@@ -9,6 +10,10 @@ final class DiaryService {
 }
 
 extension DiaryService: DiaryServiceProtocol {
+    func addTask(_ model: AddTaskRequestModel.Data, completion: @escaping (Result<TasksResponse, any Error>) -> Void) {
+        print("dataToSend: \(model)")
+    }
+    
     func getTasks(completion: @escaping (Result<TasksResponse, any Error>) -> Void) {
         let urlString = "https://jsonhost.com/json/242ecff29a7d3d9b6b17e5d681e11fd9"
         guard let url = URL(string: urlString) else { return }
